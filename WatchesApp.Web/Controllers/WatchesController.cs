@@ -11,6 +11,7 @@ public class WatchesController : Controller
     public WatchesController() {
         watchService = WatchService.GetInstance;
     }
+
     [HttpGet("")]
     public IActionResult Index() {
         return View(watchService.GetAllWatches());

@@ -24,6 +24,7 @@ public class WatchService : IWatchRepository
         }
     }
 
+
     private List<Watch> watches = new List<Watch>
 {
     new Watch { Id = 1, Brand = "Nomos", Model = "Max Bill Chronoscope", Price = 2100m, Description = "Chronograph with minimalist Bauhaus aesthetics.", ImageUrl = "/images/nomos-maxbill-chronoscope.jpg", ReleaseYear = 2022, IsAvailable = true, Category = "Analog" },
