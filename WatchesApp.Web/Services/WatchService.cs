@@ -5,8 +5,24 @@ namespace WatchesApp.Web.Services;
 public class WatchService : IWatchRepository
 {
     // Singleton instance of WatchService that is thread-safe and lazy initialization.
-    private static Lazy<WatchService> instance = new Lazy<WatchService>(() => new WatchService());
-    public static Lazy<WatchService> GetInstance => instance;
+    private static WatchService? instance;
+    private static readonly object lockObj = new object();
+
+    /// <summary>
+    /// Gets the singleton instance of the WatchService.
+    /// </summary>
+    public static WatchService GetInstance {
+        get {
+            if(instance == null) {
+                lock(lockObj) {
+                    if(instance == null) {
+                        instance = new WatchService();
+                    }
+                }
+            }
+            return instance;
+        }
+    }
 
     private List<Watch> watches = new List<Watch>
 {
@@ -31,8 +47,14 @@ public class WatchService : IWatchRepository
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// Get all watches sorted by brand name in ascending order.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerable<Watch> GetAllWatches() {
-        throw new NotImplementedException();
+        // Sort the watches by brand name in ascending order.
+        watches.Sort((x, y) => x.Brand.CompareTo(y.Brand));
+        return watches;
     }
 
     public Watch? GetWatchById(int id) {
