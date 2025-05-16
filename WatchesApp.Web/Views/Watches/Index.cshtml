@@ -18,10 +18,23 @@
     <div class="container text-center">
         <div class="row">
             @foreach(var watch in Model) {
-             
+
                 <div class="col-sm-4">
-                    <p>@watch.Brand</p>
+                    <dl>
+                        <dt>@watch.Brand</dt>
+                        <dd>@watch.Model</dd>
+                        <dt>Year</dt>
+                        <dd>@watch.ReleaseYear</dd>
+                        <dt>Price</dt>
+                        <dd>- @watch.Price.ToString("C")</dd>
+                        <dt>Description</dt>
+                        <dd>@watch.Description</dd>
+                        <dt>Category</dt>
+                        <dd>@watch.Category.Name</dd>
+                        <dd>@watch.Category.Description</dd>
+                    </dl>
                     <img src="@watch.ImageUrl" class="img-responsive mb-2" style="width:100%" alt="@watch.Model" />
+
                 </div>
             }
         </div>
