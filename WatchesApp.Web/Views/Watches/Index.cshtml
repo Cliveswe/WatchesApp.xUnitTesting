@@ -12,15 +12,24 @@
 </head>
 <body>
     <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>Watches from around the world.</h1>
+        <h1 class="text-capitalize">Watches from around the world.</h1>
         <p>A limited selection of watches!</p>
     </div>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item text-capitalize active">List all watches</li>
+                <li class="breadcrumb-item text-capitalize"><a href="#">Add a watch</a></li>
+                <li class="breadcrumb-item text-capitalize"><a href="#">Italy</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container text-center">
         <div class="row">
             @foreach(var watch in Model) {
 
                 <div class="col-sm-4">
-                    <dl>
+                    <dl class="dl-horizontal">
                         <dt>@watch.Brand</dt>
                         <dd>@watch.Model</dd>
                         <dt>Year</dt>
@@ -28,18 +37,18 @@
                         <dt>Price</dt>
                         <dd>- @watch.Price.ToString("C")</dd>
                         <dt>Description</dt>
-                        <dd>@watch.Description</dd>
+                        <dd class="bg-info">@watch.Description</dd>
                         <dt>Category</dt>
                         <dd>@watch.Category.Name</dd>
-                        <dd>@watch.Category.Description</dd>
+                        <dd class="bg-warning">@watch.Category.Description</dd>
                     </dl>
-                    <img src="@watch.ImageUrl" class="img-responsive mb-2" style="width:100%" alt="@watch.Model" />
-
+                    <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:100%" alt="@watch.Model" />
                 </div>
             }
         </div>
     </div>
-    <footer class="container-fluid bg-primary p-5 text-center text-white">
+
+    <footer class="container-fluid bg-primary mt-5 p-5 text-center text-white">
         <span>Copyright &copy;2023 Clive Leddy</span>
     </footer>
 </body>
