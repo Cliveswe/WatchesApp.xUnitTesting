@@ -2,6 +2,6 @@
 
 public interface ICategoryRepository
 {
-    List<Category> GetAllCategories();
+    IEnumerable<Category> GetAllCategories();
     Category? GetCategoryById(int id);
 }

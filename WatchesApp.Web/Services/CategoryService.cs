@@ -25,7 +25,7 @@ public class CategoryService : ICategoryRepository
         new Category { Id = 3, Name = "Smart", Description ="Requires to be connected to a mobile phone or requires a sim-card."}
     };
 
-    public List<Category> GetAllCategories() => categories;
+    public IEnumerable<Category> GetAllCategories() => categories;
 
     public Category? GetCategoryById(int id) {
         throw new NotImplementedException();
