@@ -4,7 +4,7 @@ namespace WatchesApp.Web.Services;
 
 public class WatchService : IWatchRepository
 {
-    private static List<Watch> watches = new List<Watch>
+    private List<Watch> watches = new List<Watch>
 {
     new Watch { Id = 1, Brand = "Nomos", Model = "Max Bill Chronoscope", Price = 2100m, Description = "Chronograph with minimalist Bauhaus aesthetics.", ImageUrl = "/images/nomos-maxbill-chronoscope.jpg", ReleaseYear = 2022, IsAvailable = true, Category = "Analog" },
     new Watch { Id = 2, Brand = "Frederique Constant", Model = "Classics Index", Price = 995m, Description = "Elegant Swiss dress watch.", ImageUrl = "/images/frederique-classics.jpg", ReleaseYear = 2021, IsAvailable = true, Category = "Analog" },
