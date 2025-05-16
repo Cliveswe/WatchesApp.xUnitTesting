@@ -30,4 +30,6 @@ public class CategoryService : ICategoryRepository
     public Category? GetCategoryById(int id) {
         throw new NotImplementedException();
     }
+
+    public Category GetCategoryByName(string name) => categories.Find(c => c.Name == name);
 }
