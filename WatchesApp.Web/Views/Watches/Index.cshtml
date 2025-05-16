@@ -1,7 +1,6 @@
 ﻿@using WatchesApp.Web.Models
 @model IEnumerable<Watch>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-!
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +41,7 @@
                         <dd>@watch.Category.Name</dd>
                         <dd class="bg-warning">@watch.Category.Description</dd>
                     </dl>
-                    <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:100%" alt="@watch.Model" />
+                    <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:300px; height:300px; object-fit: cover" alt="@watch.Model" />
                 </div>
             }
         </div>
