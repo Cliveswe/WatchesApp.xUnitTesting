@@ -6,13 +6,14 @@ public class Watch
 {
     public int Id { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "You must specify a brand name")]
+
     public string Brand { get; set; } = string.Empty;
 
-    [Required]
+    [Required(ErrorMessage = "You must specify a model")]
     public string Model { get; set; } = string.Empty;
 
-    [Required]
+
     [DataType(DataType.Currency)]
     public decimal Price { get; set; }
 

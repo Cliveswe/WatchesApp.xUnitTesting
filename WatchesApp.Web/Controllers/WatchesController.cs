@@ -24,7 +24,8 @@ public class WatchesController : Controller
 
     [HttpGet("/create")]
     public IActionResult Create() {
-
-        return View();
+        var watches = watchService.GetAllWatches();
+        var categries = categoryService.GetAllCategories();
+        return View((watches, categries));
     }
 }
