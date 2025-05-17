@@ -1,5 +1,9 @@
 ﻿@using WatchesApp.Web.Models
+@*
 @model IEnumerable<Watch>
+    *@
+@model (IEnumerable<Watch> watches, IEnumerable<Category> categoryService)
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html>
@@ -25,9 +29,10 @@
     </nav>
     <div class="container text-center">
         <div class="row">
-            @foreach(var watch in Model) {
+            @foreach(var watch in Model.watches) {
 
                 <div class="col-sm-4">
+                    <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:300px; height:300px; object-fit: cover" alt="@watch.Model" />
                     <dl class="dl-horizontal">
                         <dt>@watch.Brand</dt>
                         <dd>@watch.Model</dd>
@@ -38,10 +43,9 @@
                         <dt>Description</dt>
                         <dd class="bg-info">@watch.Description</dd>
                         <dt>Category</dt>
-                        <dd>@watch.Category.Name</dd>
-                        <dd class="bg-warning">@watch.Category.Description</dd>
+                        <dd>@Model.categoryService.FirstOrDefault(c => c.Id == watch.Category)?.Name;</dd>
+                        <dd class="bg-warning">@Model.categoryService.FirstOrDefault(c => c.Id == watch.Category)?.Description;</dd>
                     </dl>
-                    <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:300px; height:300px; object-fit: cover" alt="@watch.Model" />
                 </div>
             }
         </div>

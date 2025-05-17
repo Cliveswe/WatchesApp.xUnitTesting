@@ -7,13 +7,18 @@ public class WatchesController : Controller
 {
     // Dependency injection for the watch service
     private IWatchRepository watchService;
-
+    private ICategoryRepository categoryService;
     public WatchesController() {
         watchService = WatchService.GetInstance;
+        categoryService = CategoryService.GetInstance;
     }
 
     [HttpGet("")]
     public IActionResult Index() {
-        return View(watchService.GetAllWatches());
+
+        var watches = watchService.GetAllWatches();
+        var categries = categoryService.GetAllCategories();
+
+        return View((watches, categries));
     }
 }

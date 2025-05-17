@@ -26,5 +26,5 @@ public class Watch
     [Display(Name = "Is Available")]
     public bool IsAvailable { get; set; }
 
-    public Category Category { get; set; } = default; // e.g., Analog, Digital, Smart, etc.
+    public int Category { get; set; } = default; // e.g., Analog, Digital, Smart, etc.
 }
