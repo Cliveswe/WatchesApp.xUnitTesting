@@ -8,7 +8,6 @@ public class Watch
 
     [Required(ErrorMessage = "You must specify a brand name")]
     [Display(Prompt = "Name of Brand")]
-
     public string Brand { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "You must specify a model")]
@@ -20,12 +19,14 @@ public class Watch
     [Required(ErrorMessage = "Price")]
     [Display(Prompt = "Price")]
     public decimal Price { get; set; }
+
     [Display(Prompt = "A short description")]
     public string? Description { get; set; }
 
     [Display(Prompt = "Link to model image")]
     public string? ImageUrl { get; set; }
 
+    [DataType(DataType.Date)]
     [Display(Name = "Release Year")]
     public int? ReleaseYear { get; set; }
 
