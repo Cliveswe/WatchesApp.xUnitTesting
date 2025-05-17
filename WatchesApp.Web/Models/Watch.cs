@@ -30,7 +30,7 @@ public class Watch
     [Display(Name = "Release Year")]
     public int? ReleaseYear { get; set; }
 
-    [Display(Name = "Is Available")]
+    [Display(Name = "Check box if available")]
     [Required(ErrorMessage = "Yes/No")]
     public bool IsAvailable { get; set; }
 
