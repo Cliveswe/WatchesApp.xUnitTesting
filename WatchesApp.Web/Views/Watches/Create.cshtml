@@ -1,6 +1,6 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @using WatchesApp.Web.Models
-@model (IEnumerable<Watch> watches, IEnumerable<Category> categories)
+@model Watch
 
 
 <!DOCTYPE html>
@@ -29,14 +29,39 @@
     <div class="container text-center">
         <div class="row">
             <form asp-controller="Watch" asp-action="Create" method="post">
-                <label asp-for="Brand"></label>
-                <input asp-for="Brand" />
+                <input asp-for="Brand" class="form-control mt-3" />
                 <span asp-validation-for="Brand"></span>
 
-                <label asp-for="Model"></label>
-                <input asp-for="Model" />
+                <input asp-for="Model" class="form-control mt-3" />
                 <span asp-validation-for="Model"></span>
                 <br />
+
+                <input asp-for="Price" class="form-control mt-3" />
+                <span asp-validation-for="Price"></span>
+                
+                <label asp-for="IsAvailable"></label>
+                <input asp-for="IsAvailable" />
+                <span asp-validation-for="IsAvailable"></span>
+
+                @{
+                    var categories = ViewBag.Categories as List<Category>;
+                }
+                <select asp-for="Category" asp-items="@(new SelectList(categories, "Id", "Name"))"></select>
+
+                <br />
+
+                <input asp-for="ReleaseYear" class="form-control mt-3" />
+                <span asp-validation-for="ReleaseYear"></span>
+                
+                <input asp-for="ImageUrl" class="form-control mt-3" />
+                <span asp-validation-for="ImageUrl"></span>
+                <br />
+                
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description"></span>
+              
+                <br/>
+
                 <input type="submit" value="Save" />
             </form>
             <div asp-validation-summary="All"></div>

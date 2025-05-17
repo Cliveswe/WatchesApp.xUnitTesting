@@ -7,25 +7,32 @@ public class Watch
     public int Id { get; set; }
 
     [Required(ErrorMessage = "You must specify a brand name")]
+    [Display(Prompt = "Name of Brand")]
 
     public string Brand { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "You must specify a model")]
+    [Display(Prompt = "Model reference")]
     public string Model { get; set; } = string.Empty;
 
 
     [DataType(DataType.Currency)]
+    [Required(ErrorMessage = "Price")]
+    [Display(Prompt = "Price")]
     public decimal Price { get; set; }
+    [Display(Prompt = "A short description")]
+    public string? Description { get; set; }
 
-    public string Description { get; set; }
-
-    public string ImageUrl { get; set; }
+    [Display(Prompt = "Link to model image")]
+    public string? ImageUrl { get; set; }
 
     [Display(Name = "Release Year")]
-    public int ReleaseYear { get; set; }
+    public int? ReleaseYear { get; set; }
 
     [Display(Name = "Is Available")]
+    [Required(ErrorMessage = "Yes/No")]
     public bool IsAvailable { get; set; }
 
+    [Display(Name = "Select from category")]
     public int Category { get; set; } = default; // e.g., Analog, Digital, Smart, etc.
 }
