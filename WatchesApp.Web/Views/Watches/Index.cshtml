@@ -31,7 +31,11 @@
         <div class="row">
             @foreach(var watch in Model.watches) {
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 mt-3">
+
+                    <div class="card">
+                        <div class="card-body">
+
                     <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:300px; height:300px; object-fit: cover" alt="@watch.Model" />
                     <dl class="dl-horizontal">
                         <dt>@watch.Brand</dt>
@@ -46,6 +50,8 @@
                         <dd>@Model.categoryService.FirstOrDefault(c => c.Id == watch.Category)?.Name;</dd>
                         <dd class="bg-warning">@Model.categoryService.FirstOrDefault(c => c.Id == watch.Category)?.Description;</dd>
                     </dl>
+                        </div>
+                    </div>
                 </div>
             }
         </div>
