@@ -21,4 +21,10 @@ public class WatchesController : Controller
 
         return View((watches, categries));
     }
+
+    [HttpGet("/create")]
+    public IActionResult Create() {
+
+        return View();
+    }
 }
