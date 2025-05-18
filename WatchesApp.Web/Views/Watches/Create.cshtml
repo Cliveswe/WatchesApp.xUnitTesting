@@ -46,17 +46,13 @@
                     <input asp-for="Price" class="form-control mt-3" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
-                <div class="col-md-3">
-                    <div class="d-flex flex-column" style=" height: 54px;">
-                        <div class="mt-auto align-self-start">
+                <div class="col-md-3 d-flex flex-column justify-content-end align-items-start">
                             <div class="form-check">
                                 <input asp-for="IsAvailable" class="form-check-input " />
                                 <label asp-for="IsAvailable" class="form-check-label "></label>
                             </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 d-flex flex-column justify-content-end align-items-start pb-1">
                     @{
                         var categories = ViewBag.Categories as List<Category>;
                     }
