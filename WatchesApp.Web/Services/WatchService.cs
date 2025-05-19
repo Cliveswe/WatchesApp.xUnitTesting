@@ -46,6 +46,7 @@ public class WatchService : IWatchRepository
 
     public void AddWatch(Watch watch) {
         int N = NextId;
+
         watch.Id = N;
         watches.Add(watch);
     }

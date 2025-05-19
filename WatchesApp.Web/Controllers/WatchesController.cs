@@ -33,9 +33,11 @@ public class WatchesController : Controller
     public IActionResult Create(Watch watch) {
         //Need to resend the Create action
         if(!ModelState.IsValid) {
+
             ViewBag.Categories = categoryService.GetAllCategories();
             return View(new Watch());
         }
+
         watchService.AddWatch(watch);
         return RedirectToAction(nameof(Index));
     }
