@@ -47,10 +47,10 @@
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
                 <div class="col-md-3 d-flex mt-auto align-self-start">
-                            <div class="form-check">
-                                <input asp-for="IsAvailable" class="form-check-input " />
-                                <label asp-for="IsAvailable" class="form-check-label "></label>
-                            </div>
+                    <div class="form-check">
+                        <input asp-for="IsAvailable" class="form-check-input " />
+                        <label asp-for="IsAvailable" class="form-check-label "></label>
+                    </div>
                 </div>
                 <div class="col-md-3 d-flex mt-auto align-self-start">
                     @{
@@ -78,7 +78,10 @@
 
             <input type="submit" value="Save" class="btn btn-primary" />
         </form>
-        <div asp-validation-summary="All"></div>
+        <hr />
+    </div>
+    <div class="container text-left">
+        <div asp-validation-summary="All" class="text-danger"></div>
     </div>
 
 

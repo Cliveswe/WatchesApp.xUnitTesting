@@ -42,9 +42,11 @@ public class WatchService : IWatchRepository
     new Watch {Id = 12, Brand ="Ressence", Model ="Type 3 Black", Price = 544500m, Description ="Re-imagines traditional watch design through innovative use of oil-filled chambers and magnetic transmission systems.", ImageUrl="https://feldmarwatch.com/wp-content/uploads/2024/02/type-35.jpg", ReleaseYear= 2013 ,IsAvailable= false, Category=1}
 };
 
+    private int NextId { get => watches.Count > 0 ? watches.Max(o => o.Id) + 1 : 1; }
 
     public void AddWatch(Watch watch) {
-        throw new NotImplementedException();
+        int N = NextId;
+        watch.Id = N;
     }
 
     public void DeleteWatch(int id) {
