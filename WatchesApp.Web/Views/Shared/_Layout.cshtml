@@ -14,8 +14,8 @@
     <nav class="navbar navbar-expand-sm bg-light">
         <div class="container">
             <ul class="breadcrumb">
-                <li class="breadcrumb-item text-capitalize @ViewBag.IndexActive">@Html.Raw(@ViewBag.IndexLink)</li>
                 <!-- Note: the one needs to use Html.Raw to inject HTML into the Razor via ViewBag -->
+                <li class="breadcrumb-item text-capitalize @ViewBag.IndexActive">@Html.Raw(@ViewBag.IndexLink)</li>
                 <li class="breadcrumb-item text-capitalize @ViewBag.CreateActive">@Html.Raw(@ViewBag.CreateLink)</li>
             </ul>
         </div>
