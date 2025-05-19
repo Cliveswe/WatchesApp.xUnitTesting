@@ -28,6 +28,7 @@ public class Watch
 
     [DataType(DataType.Date)]
     [Display(Name = "Release Year")]
+    [Required(ErrorMessage = "Please select a year")]
     public int? ReleaseYear { get; set; }
 
     [Display(Name = "Check box if available")]

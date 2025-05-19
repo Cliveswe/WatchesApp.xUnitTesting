@@ -60,8 +60,15 @@
                 </div>
 
                 <div class="col-md-3">
-                    <input asp-for="ReleaseYear" class="form-control mt-3" />
+                    @*<input asp-for="ReleaseYear" class="form-control mt-3" />
                     <span asp-validation-for="ReleaseYear"></span>
+                    *@
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+                    <select asp-for="ReleaseYear" class="form-control"
+                            asp-items="@(new SelectList(Enumerable.Range(1900,DateTime.Now.Year - 1899).Reverse()))">
+                        <option value="">-- Select Year --</option>
+                    </select>
+                    
                 </div>
             </div>
             <div class="row">
