@@ -78,12 +78,15 @@
         <br />
 
         <input type="submit" value="Save" class="btn btn-primary" />
+        <br />
+
+        <div class="d-flex justify-content-left">
+
+            <div asp-validation-summary="All" class="text-danger text-left"></div>
+        </div>
+
     </form>
     <hr />
-</div>
-<div class="container text-left">
-
-    <div asp-validation-summary="All" class="text-danger"></div>
 </div>
 
 @section Scripts {

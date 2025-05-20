@@ -14,7 +14,6 @@ public class Watch
     [Display(Prompt = "Model reference")]
     public string Model { get; set; } = string.Empty;
 
-
     [DataType(DataType.Currency)]
     [Required(ErrorMessage = "Price")]
     [Display(Prompt = "Price")]
