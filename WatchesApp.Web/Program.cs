@@ -14,6 +14,9 @@ public class Program
         // Register middle-ware for the HTTP request pipeline.
         app.MapControllers();
 
+        //Register middle-ware for static files.
+        app.UseStaticFiles();
+
         // Start the application and listen for incoming HTTP requests.
         app.Run();
     }
