@@ -6,8 +6,8 @@ namespace WatchesApp.Web.Controllers;
 public class WatchesController : Controller
 {
     // Dependency injection for the watch service
-    private IWatchRepository watchService;
-    private ICategoryRepository categoryService;
+    private readonly WatchService watchService;
+    private readonly CategoryService categoryService;
     public WatchesController() {
         watchService = WatchService.GetInstance;
         categoryService = CategoryService.GetInstance;
@@ -25,8 +25,10 @@ public class WatchesController : Controller
     [HttpGet("/create")]
     public IActionResult Create() {
 
+        //Need to send the categories to the view.
         ViewBag.Categories = categoryService.GetAllCategories();
-        return View(new Watch());
+
+        return View();
     }
 
     [HttpPost("/create")]
