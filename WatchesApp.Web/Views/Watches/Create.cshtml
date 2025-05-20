@@ -13,13 +13,18 @@
     <form asp-controller="Watch" asp-action="Create" method="post">
         <div class="row">
             <div class="col-md-6">
+
                 <input asp-for="Brand" class="form-control mt-3" />
                 <span asp-validation-for="Brand" class="text-danger"></span>
+           
             </div>
             <div class="col-md-6">
+            
                 <input asp-for="Model" class="form-control mt-3" />
                 <span asp-validation-for="Model" class="text-danger"></span>
+
             </div>
+  
         </div>
         <br />
         <div class="row">
@@ -27,11 +32,14 @@
 
                 <input asp-for="Price" class="form-control mt-3" />
                 <span asp-validation-for="Price" class="text-danger"></span>
+            
             </div>
             <div class="col-md-3 d-flex mt-auto align-self-start">
                 <div class="form-check">
+            
                     <input asp-for="IsAvailable" class="form-check-input " />
                     <label asp-for="IsAvailable" class="form-check-label "></label>
+                
                 </div>
             </div>
             <div class="col-md-3 d-flex mt-auto align-self-start">
@@ -40,7 +48,6 @@
                 }
                 <select asp-for="Category" asp-items="@(new SelectList(categories, "Id", "Name"))" class="mt-4"></select>
             </div>
-
             <div class="col-md-3">
                 @*<input asp-for="ReleaseYear" class="form-control mt-3" />
                     <span asp-validation-for="ReleaseYear"></span>
@@ -52,15 +59,20 @@
                 </select>
 
             </div>
+
         </div>
         <div class="row">
             <div class="col-md-6">
+
                 <input asp-for="ImageUrl" class="form-control mt-3" />
                 <span asp-validation-for="ImageUrl"></span>
+            
             </div>
             <div class="col-md-6">
+            
                 <textarea asp-for="Description" class="form-control mt-3"></textarea>
                 <span asp-validation-for="Description"></span>
+            
             </div>
         </div>
         <br />
