@@ -48,9 +48,20 @@ public class WatchesController : Controller
     public IActionResult Create() {
 
         //Need to send the categories to the view.
-        ViewBag.Categories = categoryService.GetAllCategories();
+        //ViewBag.Categories = categoryService.GetAllCategories();
+        var categories = categoryService.GetAllCategories();
 
-        return View();
+        var ViewModel = new CreateVM {
+            WatchItems = new CreateVM.WatchItemVM(),
+            CategoriesItems = categories
+            .Select(o => new CreateVM.CategoryItemVM {
+                Id = o.Id,
+                Name = o.Name,
+                Description = o.Description
+            }).ToList()
+        };
+
+        return View(ViewModel);
     }
 
     [HttpPost("/create")]
