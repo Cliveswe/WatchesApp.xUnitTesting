@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WatchesApp.Web.Models;
 using WatchesApp.Web.Services;
+using WatchesApp.Web.Views.Watches;
 
 namespace WatchesApp.Web.Controllers;
 public class WatchesController : Controller
@@ -19,7 +20,28 @@ public class WatchesController : Controller
         var watches = watchService.GetAllWatches();
         var categries = categoryService.GetAllCategories();
 
-        return View((watches, categries));
+        var ViewModel = new IndexVM {
+            WatchItems = watches
+        .Select(o => new IndexVM.WatchItemVM {
+            Brand = o.Brand,
+            Model = o.Model,
+            Price = o.Price,
+            Description = o.Description,
+            ImageUrl = o.ImageUrl,
+            ReleaseYear = o.ReleaseYear,
+            Category = o.Category
+        }).ToList(),
+            CategoryItems = categries
+        .Select(o => new IndexVM.CategoryItemVM {
+            Id = o.Id,
+            Name = o.Name,
+            Description = o.Description
+        }).ToList(),
+        };
+
+
+        // return View((watches, categries));
+        return View(ViewModel);
     }
 
     [HttpGet("/create")]
