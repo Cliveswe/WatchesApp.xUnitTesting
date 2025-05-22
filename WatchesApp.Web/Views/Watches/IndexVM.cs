@@ -3,9 +3,9 @@
 public class IndexVM
 {
 
-    public List<WatchItemVM> WatchItems { get; set; } = null!;
+    public required List<WatchItemVM> WatchItems { get; set; }
 
-    public List<CategoryItemVM> CategoryItems { get; set; } = null!;
+    public required List<CategoryItemVM> CategoryItems { get; set; }
 
     public class CategoryItemVM
     {
