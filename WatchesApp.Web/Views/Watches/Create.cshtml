@@ -7,6 +7,9 @@
     ViewBag.CreateActive = "active";
     ViewBag.CreateLink = "Add new watch";
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/style.css" />
+}
 
 <div class="container text-center">
 
@@ -15,13 +18,13 @@
             <div class="col-md-6">
                 
                 <input asp-for="WatchItems.Brand" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.Brand" class="text-danger"></span>
+                <span asp-validation-for="WatchItems.Brand" class="text-danger validation-message-space"></span>
 
             </div>
             <div class="col-md-6">
 
                 <input asp-for="WatchItems.Model" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.Model" class="text-danger"></span>
+                <span asp-validation-for="WatchItems.Model" class="text-danger validation-message-space"></span>
 
             </div>
 
@@ -30,8 +33,8 @@
         <div class="row">
             <div class="col-md-3">
 
-                <input asp-for="WatchItems.Price" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.Price" class="text-danger"></span>
+                <span asp-validation-for="WatchItems.Price" class="text-danger validation-message-space"></span>
+                <input asp-for="WatchItems.Price" class="form-control" />
 
             </div>
             <div class="col-md-3 d-flex mt-auto align-self-start">
@@ -42,17 +45,21 @@
 
                 </div>
             </div>
-            <div class="col-md-3 d-flex mt-auto align-self-start">
+            <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
                 @{
                     //var categories = Model.Categories as List<Category>;
                 }
-                <select asp-for="WatchItems.Category" asp-items="@(new SelectList(Model.CategoriesItems, "Id", "Name"))" class="mt-4"></select>
+                <span asp-validation-for="WatchItems.Category" class="text-danger validation-message-space"></span>
+                <select asp-for="WatchItems.Category" class="form-control"  asp-items="@(new SelectList(Model.CategoryItems, "Id", "Name"))">
+                    <option value="">-- Select Category --</option>
+                </select>
+                
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
                 @*<input asp-for="ReleaseYear" class="form-control mt-3" />
                     <span asp-validation-for="ReleaseYear"></span>
                     *@
-                <span asp-validation-for="WatchItems.ReleaseYear" class="text-danger"></span>
+                <span asp-validation-for="WatchItems.ReleaseYear" class="text-danger validation-message-space"></span>
                 <select asp-for="WatchItems.ReleaseYear" class="form-control"
                         asp-items="@(new SelectList(Enumerable.Range(1900, DateTime.Now.Year - 1899).Reverse()))">
                     <option value="">-- Select Year --</option>

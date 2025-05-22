@@ -1,0 +1,4 @@
+﻿.validation-message-space {
+    display: block;
+    min-height: 1.25rem; /* Adjust based on your font size */
+}

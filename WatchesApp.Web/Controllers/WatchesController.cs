@@ -49,29 +49,54 @@ public class WatchesController : Controller
 
         //Need to send the categories to the view.
         //ViewBag.Categories = categoryService.GetAllCategories();
+        //var categories = categoryService.GetAllCategories();
+
+        //var ViewModel = new CreateVM {
+        //    WatchItems = new CreateVM.WatchItemVM(),
+        //    CategoriesItems = categories
+        //    .Select(o => new CreateVM.CategoryItemVM {
+        //        Id = o.Id,
+        //        Name = o.Name,
+        //        Description = o.Description
+        //    }).ToList()
+        //};
+        var viewModel = BuildCreateViewModel();
+
+        return View(viewModel);
+    }
+
+    private CreateVM BuildCreateViewModel() {
         var categories = categoryService.GetAllCategories();
-
-        var ViewModel = new CreateVM {
+        var viewModel = new CreateVM {
             WatchItems = new CreateVM.WatchItemVM(),
-            CategoriesItems = categories
-            .Select(o => new CreateVM.CategoryItemVM {
-                Id = o.Id,
-                Name = o.Name,
-                Description = o.Description
-            }).ToList()
+            CategoryItems = categories
+                .Select(o => new CreateVM.CategoryItemVM {
+                    Id = o.Id,
+                    Name = o.Name,
+                    Description = o.Description
+                }).ToList()
         };
-
-        return View(ViewModel);
+        return viewModel;
     }
 
     [HttpPost("/create")]
-    public IActionResult Create(Watch watch) {
-        //Need to resend the Create action
+    public IActionResult Create(CreateVM viewModel) {
+        // Need to resend the Create action
         if(!ModelState.IsValid) {
-
-            ViewBag.Categories = categoryService.GetAllCategories();
-            return View(new Watch());
+            return View(viewModel);
         }
+
+        // Need to cast the ViewModel to Watch.
+        Watch watch = new Watch {
+            Brand = viewModel.WatchItems.Brand,
+            Model = viewModel.WatchItems.Model,
+            Price = viewModel.WatchItems.Price ?? 0, // Default to 0 if null
+            Description = viewModel.WatchItems.Description,
+            ImageUrl = viewModel.WatchItems.ImageUrl,
+            ReleaseYear = viewModel.WatchItems.ReleaseYear,
+            IsAvailable = viewModel.WatchItems.IsAvailable,
+            Category = viewModel.WatchItems.Category ?? 0 // Default to 0 if null
+        };
 
         watchService.AddWatch(watch);
         return RedirectToAction(nameof(Index));
