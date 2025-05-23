@@ -121,6 +121,11 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
     public IActionResult Create(CreateVM viewModel) {
         // Need to resend the Create action
         if(!ModelState.IsValid) {
+            // Rebuild dropdown data
+            var vm = BuildCreateViewModel();
+
+            // Copy posted fields back so user input is preserved
+            vm.WatchItems = viewModel.WatchItems;
             return View(viewModel);
         }
 

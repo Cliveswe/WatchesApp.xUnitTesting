@@ -15,89 +15,108 @@
 <div class="container text-center">
 
     <form asp-controller="Watch" asp-action="Create" method="post">
-        <div class="row">
-            <div class="col-md-6">
-                
-                <input asp-for="WatchItems.Brand" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.Brand" class="text-danger validation-message-space"></span>
+        <fieldset>
+            <legend>Watch Manufacture</legend>
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <input asp-for="WatchItems.Brand" class="form-control mt-3" />
+                    <span asp-validation-for="WatchItems.Brand" class="text-danger validation-message-space"></span>
+
+                </div>
+                <div class="col-md-6">
+
+                    <input asp-for="WatchItems.Model" class="form-control mt-3" />
+                    <span asp-validation-for="WatchItems.Model" class="text-danger validation-message-space"></span>
+
+                </div>
 
             </div>
-            <div class="col-md-6">
-
-                <input asp-for="WatchItems.Model" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.Model" class="text-danger validation-message-space"></span>
-
-            </div>
-
-        </div>
+        </fieldset>
         <br />
-        <div class="row">
-            <div class="col-md-3">
+        <fieldset>
+            <legend>Watch details</legend>
+            <div class="row">
+                <div class="col-md-3">
 
-                <span asp-validation-for="WatchItems.Price" class="text-danger validation-message-space"></span>
-                <input asp-for="WatchItems.Price" class="form-control" />
+                    <span asp-validation-for="WatchItems.Price" class="text-danger validation-message-space"></span>
+                    <input asp-for="WatchItems.Price" class="form-control" />
+
+                </div>
+                <div class="col-md-3 d-flex mt-auto align-self-start">
+                    <div class="form-check">
+
+                        <input asp-for="WatchItems.IsAvailable" class="form-check-input " />
+                        <label asp-for="WatchItems.IsAvailable" class="form-check-label "></label>
+
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
+                    @{
+                        //var categories = Model.Categories as List<Category>;
+                    }
+                    <span asp-validation-for="WatchItems.Category" class="text-danger validation-message-space"></span>
+                    <select asp-for="WatchItems.Category" class="form-control" asp-items="@(new SelectList(Model.CategoryItems, "Id", "Name"))">
+                        <option value="">-- Select Category --</option>
+                    </select>
+
+                </div>
+                <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
+                    @*<input asp-for="ReleaseYear" class="form-control mt-3" />
+                    <span asp-validation-for="ReleaseYear"></span>
+                    *@
+                    <span asp-validation-for="WatchItems.ReleaseYear" class="text-danger validation-message-space"></span>
+                    <select asp-for="WatchItems.ReleaseYear" class="form-control"
+                            asp-items="@(new SelectList(Model.AvailableYears))">
+                        <option value="">-- Select Year --</option>
+                    </select>
+
+                </div>
 
             </div>
-            <div class="col-md-3 d-flex mt-auto align-self-start">
-                <div class="form-check">
+        </fieldset>
+        <br />
+        <fieldset>
+            <legend>Optional details</legend>
+            <div class="row">
+                <div class="col-md-6">
 
-                    <input asp-for="WatchItems.IsAvailable" class="form-check-input " />
-                    <label asp-for="WatchItems.IsAvailable" class="form-check-label "></label>
+                    <input asp-for="WatchItems.ImageUrl" class="form-control mt-3" />
+                    <span asp-validation-for="WatchItems.ImageUrl"></span>
+
+                </div>
+                <div class="col-md-6">
+
+                    <textarea asp-for="WatchItems.Description" class="form-control mt-3"></textarea>
+                    <span asp-validation-for="WatchItems.Description"></span>
 
                 </div>
             </div>
-            <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
-                @{
-                    //var categories = Model.Categories as List<Category>;
-                }
-                <span asp-validation-for="WatchItems.Category" class="text-danger validation-message-space"></span>
-                <select asp-for="WatchItems.Category" class="form-control"  asp-items="@(new SelectList(Model.CategoryItems, "Id", "Name"))">
-                    <option value="">-- Select Category --</option>
-                </select>
-                
-            </div>
-            <div class="col-md-3 d-flex flex-column mt-auto align-self-start">
-                @*<input asp-for="ReleaseYear" class="form-control mt-3" />
-                    <span asp-validation-for="ReleaseYear"></span>
-                    *@
-                <span asp-validation-for="WatchItems.ReleaseYear" class="text-danger validation-message-space"></span>
-                <select asp-for="WatchItems.ReleaseYear" class="form-control"
-                        asp-items="@(new SelectList(Enumerable.Range(1900, DateTime.Now.Year - 1899).Reverse()))">
-                    <option value="">-- Select Year --</option>
-                </select>
+            <br />
 
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-
-                <input asp-for="WatchItems.ImageUrl" class="form-control mt-3" />
-                <span asp-validation-for="WatchItems.ImageUrl"></span>
-
-            </div>
-            <div class="col-md-6">
-
-                <textarea asp-for="WatchItems.Description" class="form-control mt-3"></textarea>
-                <span asp-validation-for="WatchItems.Description"></span>
-
-            </div>
-        </div>
+            @*<input type="submit" value="Save" class="btn btn-primary" />*@
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save"></i>Save Watch
+            </button>
+        </fieldset>
         <br />
 
-        <input type="submit" value="Save" class="btn btn-primary" />
-        <br />
-
-        <div class="d-flex justify-content-left">
-
-            <div asp-validation-summary="All" class="text-danger text-start"></div>
+        <div id="validationSummaryContainer" class="text-danger text-start" >
+            <div asp-validation-summary="All">Please correct the following errors.</div>
         </div>
+
+
+
+
+        @*<div asp-validation-summary="All" class="text-danger text-start">Please correct the following errors.</div>*@
 
     </form>
     <hr />
 </div>
 
 @section Scripts {
+
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"
             asp-fallback-src="/scripts/lib/jquery/jquery.min.js"></script>
 
@@ -106,4 +125,34 @@
 
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"
             asp-fallback-src="/scripts/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(function () {
+            var form = $("form");
+            var summaryContainer = $("#validationSummaryContainer");
+
+            function toggleSummary() {
+                // If the form is valid, hide the summary; otherwise show it
+                if (form.valid()) {
+                    summaryContainer.hide();
+                } else {
+                    summaryContainer.show();
+                }
+            }
+
+            // Check once on page load
+            toggleSummary();
+
+            // Check again on form submission
+            form.on("submit", function () {
+                // Let validation run first before checking
+                setTimeout(toggleSummary, 0);
+            });
+
+            // Also check on input/change to hide summary as soon as errors are fixed
+            form.on("keyup change", "input, select, textarea", function () {
+                toggleSummary();
+            });
+        });
+    </script>
+
 }
