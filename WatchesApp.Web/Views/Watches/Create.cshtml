@@ -1,4 +1,16 @@
-﻿@model CreateVM
+﻿@*// -----------------------------------------------------------------------------
+// File: Create.cshtml
+// Summary: Displays a form for adding a new watch using CreateVM. Includes
+//          fields for brand, model, pricing, availability, and more.
+// Author: Clive Leddy
+// Created: 2025-05-23
+// Notes:
+//   - Uses client-side validation with Bootstrap styling.
+//   - Validation summary is dynamically toggled with jQuery.
+//   - Drop-downs populate categories and release years from the model.
+// -----------------------------------------------------------------------------
+*@
+@model CreateVM
 
 @{
     @* Inject HTML code into the layout razor.*@

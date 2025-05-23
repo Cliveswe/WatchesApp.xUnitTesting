@@ -1,8 +1,27 @@
-﻿.validation-message-space {
+﻿// -----------------------------------------------------------------------------
+// File: style.css
+// Summary: Handles validation spacing and image layout for watch cards.
+// Author: [Clive Leddy]
+// Created: [2025-05-23]
+// Notes:
+// - .validation-message-space ensures space is reserved for inline validation.
+// - #validationSummaryContainer starts hidden and is toggled via JS on errors.
+// - #watchItemImageContainer keeps images consistently sized and cropped neatly.
+// -----------------------------------------------------------------------------
+
+
+.validation-message-space {
     display: block;
     min-height: 1.25rem; /* Adjust based on your font size */
 }
 
 #validationSummaryContainer {
     display: none;
+}
+
+#watchItemImageContainer {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    object-fit: cover;
 }

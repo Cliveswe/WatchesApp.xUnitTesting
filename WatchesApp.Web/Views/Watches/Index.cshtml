@@ -1,6 +1,14 @@
-﻿@model IndexVM
+﻿@*// -----------------------------------------------------------------------------
+// File: Index.cshtml
+// Summary: Displays a grid of watches with brand, model, price, and category
+//          info using IndexVM. Each watch is shown in a Bootstrap card layout.
+// Author: Clive Leddy
+// Created: 2025-05-23
+// Notes: Category names and descriptions are resolved via lookup from ID.
+// -----------------------------------------------------------------------------
+*@
+@model IndexVM
 @*@model (IEnumerable<Watch> watches, IEnumerable<Category> categoryService)*@
-
 
 @{
 
@@ -11,31 +19,37 @@
     ViewBag.CreateLink = "<a href=\"/create\">Add a watch</a>";
 }
 
+@* Allow this view to inject page-specific CSS styles. *@
+@section Styles {
+    <link rel="stylesheet" href="~/css/style.css" />
+}
 <div class="container text-center">
     <div class="row">
         
         @foreach(var watch in Model.WatchItems) {
 
-            <div class="col-sm-4 mt-3">
+            <div class="col-md-4 mt-3">
 
                 <div class="card">
                     <div class="card-body">
 
-                        <img src="@watch.ImageUrl" class="img-responsive media-object" style="width:300px; height:300px; object-fit: cover" alt="@watch.Model" />
-                        <dl class="dl-horizontal">
-                            <dt>@watch.Brand</dt>
-                            <dd>@watch.Model</dd>
-                            <dt>Year</dt>
-                            <dd>@watch.ReleaseYear</dd>
-                            <dt>Price</dt>
-                            <dd>- @watch.Price.ToString("C")</dd>
-                            <dt>Description</dt>
-                            <dd class="bg-info">@watch.Description</dd>
-                            <dt>Category</dt>
-                            <dd>@Model.CategoryItems.FirstOrDefault(c => c.Id == watch.Category)?.Name</dd>
-                            <dd class="bg-warning">@Model.CategoryItems.FirstOrDefault(c => c.Id == watch.Category)?.Description</dd>
-                           
-                        </dl>
+                        <img id="watchItemImageContainer" src="@watch.ImageUrl" class="img-responsive media-object"   alt="@watch.Model" />
+                        <div class="text-start">
+                            <div><strong>Brand:</strong> <span>@watch.Brand</span></div>
+                            <div><strong>Model:</strong> <span>@watch.Model</span></div>
+                            <div><strong>Year:</strong> <span>@watch.ReleaseYear</span></div>
+                            <div><strong>Price:</strong> <span>@watch.Price.ToString("C")</span></div>
+                            <div class="bg-info p-1 rounded"><strong>Description:</strong> <span>@watch.Description</span></div>
+
+                            @{
+                                var category = Model.CategoryItems.FirstOrDefault(c => c.Id == watch.Category);
+                            }
+
+                            <div><strong>Category:</strong> <span>@category?.Name</span></div>
+                            @if(!string.IsNullOrEmpty(category?.Description)) {
+                                <div class="bg-warning p-1 rounded"><strong>Details:</strong> <span>@category.Description</span></div>
+                            }
+                        </div>
 
                     </div>
 
