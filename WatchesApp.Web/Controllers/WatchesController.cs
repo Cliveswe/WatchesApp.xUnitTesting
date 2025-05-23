@@ -1,6 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// -----------------------------------------------------------------------------
+// File: WatchesController.cs
+// Summary: Handles watch-related HTTP requests like showing the main view,
+//          listing watches, and managing categories. Works with services to
+//          pull data and prepares it for the views.
+// <author>Clive Leddy</author>
+// <created>2025-05-23</created>
+// Notes: This controller connects the watch and category services to the UI.
+// -----------------------------------------------------------------------------
+
+using Microsoft.AspNetCore.Mvc;
 using WatchesApp.Web.Models;
-using WatchesApp.Web.Services;
 using WatchesApp.Web.Views.Watches;
 
 namespace WatchesApp.Web.Controllers;
@@ -8,13 +17,12 @@ namespace WatchesApp.Web.Controllers;
 /// <summary>
 /// Provides endpoints for managing watches and their associated categories in the application.
 /// </summary>
-/// <remarks>The <see cref="WatchesController"/> class handles HTTP requests related to watches and categories,
-/// including displaying the main view, creating new watches, and managing related data. It interacts with the <see
-/// cref="WatchService"/> and <see cref="CategoryService"/> to retrieve and manipulate data, and prepares view models
-/// for rendering in the views.</remarks>
+/// <remarks>The <see cref="WatchesController"/> class handles HTTP requests related to watches and categories, 
+/// including displaying the main view, creating new watch items, and managing related data. It interacts with the
+/// underlying services to retrieve and manipulate data, and prepares view models for rendering in the views.</remarks>
 /// <param name="watchService"></param>
 /// <param name="categoryService"></param>
-public class WatchesController(WatchService watchService, CategoryService categoryService) : Controller
+public class WatchesController(IWatchRepository watchService, ICategoryRepository categoryService) : Controller
 {
     // Dependency injection for the watch service
     //private readonly WatchService watchService;
@@ -104,7 +112,7 @@ public class WatchesController(WatchService watchService, CategoryService catego
     /// Handles the creation of a new watch item based on the provided view model.
     /// </summary>
     /// <remarks>This action validates the provided view model and, if valid, maps its data to a new watch
-    /// entity,  which is then added to the data store. If the model state is invalid, the same view is returned  with
+    /// entity, which is then added to the data store. If the model state is invalid, the same view is returned  with
     /// the validation errors displayed.</remarks>
     /// <param name="viewModel">The view model containing the details of the watch to be created.</param>
     /// <returns>An <see cref="IActionResult"/> that renders the creation view with validation errors if the model state is

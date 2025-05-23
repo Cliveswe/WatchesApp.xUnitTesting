@@ -1,3 +1,4 @@
+using WatchesApp.Web.Models;
 using WatchesApp.Web.Services;
 
 namespace WatchesApp.Web;
@@ -8,8 +9,9 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         //Add the singleton services to the IServaceCollection
-        builder.Services.AddSingleton<WatchService>();
-        builder.Services.AddSingleton<CategoryService>();
+        builder.Services.AddSingleton<IWatchRepository, WatchService>();
+        //Add the singleton services to the ICategoryRepository
+        builder.Services.AddSingleton<ICategoryRepository, CategoryService>();
 
         // Register services to the container that supports MVC pattern.
         builder.Services.AddControllersWithViews();
