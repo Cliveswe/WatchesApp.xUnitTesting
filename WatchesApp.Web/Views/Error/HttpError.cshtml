@@ -1,4 +1,13 @@
-﻿@Model int
+﻿@*// -----------------------------------------------------------------------------
+// File: HttpError.cshtml
+// Summary: Displays an HTTP error page based on the status code passed to the view.
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
+// Notes: This view is dynamically rendered for specific HTTP error codes like 404 or 403.
+// -----------------------------------------------------------------------------
+*@ 
+
+@Model int
 
 <div >
     <h2>HTTP Error: @Model</h2>
