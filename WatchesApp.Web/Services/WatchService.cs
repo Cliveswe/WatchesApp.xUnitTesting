@@ -1,7 +1,24 @@
-﻿using WatchesApp.Web.Models;
+﻿// -----------------------------------------------------------------------------
+// File: WatchService.cs
+// Summary: Service class for managing a list of watches. Provides a thread-safe
+//          singleton instance with methods to add and retrieve watches.
+// Author: [Clive Leddy]
+// Created: [2025-05-23]
+// Notes: Preloaded with sample watches. Implements IWatchRepository for DI use.
+// -----------------------------------------------------------------------------
+
+using WatchesApp.Web.Models;
 
 namespace WatchesApp.Web.Services;
 
+/// <summary>
+/// Provides functionality for managing a collection of watches, including adding new watches, retrieving all watches,
+/// and accessing a singleton instance of the service.
+/// </summary>
+/// <remarks>The <see cref="WatchService"/> class is implemented as a thread-safe singleton, ensuring that only
+/// one instance of the service exists throughout the application. It maintains a collection of watches with various
+/// properties such as brand, model, price, and category. The service allows adding new watches to the collection and
+/// retrieving all watches sorted by brand name.</remarks>
 public class WatchService : IWatchRepository
 {
     // Singleton instance of WatchService that is thread-safe and lazy initialization.
@@ -10,8 +27,10 @@ public class WatchService : IWatchRepository
     private CategoryService categoryService = CategoryService.GetInstance;
 
     /// <summary>
-    /// Gets the singleton instance of the WatchService.
+    /// Gets the singleton instance of the <see cref="WatchService"/> class.
     /// </summary>
+    /// <remarks>This property ensures thread-safe lazy initialization of the <see cref="WatchService"/>
+    /// instance. Use this property to access the single shared instance of the service.</remarks>
     public static WatchService GetInstance {
         get {
             if(instance == null) {
@@ -25,7 +44,13 @@ public class WatchService : IWatchRepository
         }
     }
 
-
+    /// <summary>
+    /// Represents a collection of predefined watches available in the system.
+    /// </summary>
+    /// <remarks>This list contains a set of watch objects, each with properties such as brand, model, price,
+    /// description, image URL, release year, availability status, and category. The collection is initialized with a
+    /// variety  of watches, including luxury, dress, sports, and smart-watches, to provide a diverse
+    /// selection.</remarks>
     private List<Watch> watches = new List<Watch>
 {
     new Watch { Id = 1, Brand = "Nomos", Model = "Club Sport neomatik", Price = 21000m, Description = "Chronograph with minimalist Bauhaus aesthetics.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.nomos-glashuette.com%2Fmedia%2Fimage%2F3e%2F72%2F93%2F800xauto-q80-bg238238238%2F0782_club_sport_neomatik_42_datum_blau_front_masked.jpg&f=1&nofb=1&ipt=d88422cf1281e0abf0230d1f4263e49b50bede8f02eeb6d043568ddab1fb74fa", ReleaseYear = 2022, IsAvailable = true, Category = 1},
@@ -42,8 +67,17 @@ public class WatchService : IWatchRepository
     new Watch {Id = 12, Brand ="Ressence", Model ="Type 3 Black", Price = 544500m, Description ="Re-imagines traditional watch design through innovative use of oil-filled chambers and magnetic transmission systems.", ImageUrl="https://feldmarwatch.com/wp-content/uploads/2024/02/type-35.jpg", ReleaseYear= 2013 ,IsAvailable= false, Category=1}
 };
 
+    /// <summary>
+    /// Gets the next available unique identifier for a new watch.
+    /// </summary>
     private int NextId { get => watches.Count > 0 ? watches.Max(o => o.Id) + 1 : 1; }
 
+    /// <summary>
+    /// Adds a new watch to the collection and assigns it a unique identifier.
+    /// </summary>
+    /// <remarks>The <paramref name="watch"/> parameter must not be null. The method assigns a unique
+    /// identifier to the watch before adding it to the collection.</remarks>
+    /// <param name="watch">The watch to add. The <see cref="Watch.Id"/> property will be set to a unique value.</param>
     public void AddWatch(Watch watch) {
         int N = NextId;
 
@@ -51,25 +85,13 @@ public class WatchService : IWatchRepository
         watches.Add(watch);
     }
 
-    public void DeleteWatch(int id) {
-        throw new NotImplementedException();
-    }
-
     /// <summary>
-    /// Get all watches sorted by brand name in ascending order.
+    /// Retrieves all watches in the collection, sorted by brand name in ascending order.
     /// </summary>
-    /// <returns></returns>
+    /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="Watch"/> objects, sorted by brand name in ascending order.</returns>
     public IEnumerable<Watch> GetAllWatches() {
         // Sort the watches by brand name in ascending order.
         watches.Sort((x, y) => x.Brand.CompareTo(y.Brand));
         return watches;
-    }
-
-    public Watch? GetWatchById(int id) {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateWatch(Watch watch) {
-        throw new NotImplementedException();
     }
 }

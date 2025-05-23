@@ -11,6 +11,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WatchesApp.Web.Models;
 
+/// <summary>
+/// Represents a watch entity with details such as brand, model, price, and availability.
+/// </summary>
+/// <remarks>This class is used to encapsulate the properties of a watch, including its brand, model, price, 
+/// description, image URL, release year, availability status, and category. It is designed for use  in scenarios such
+/// as form submissions, where validation is required for certain fields.</remarks>
 public class Watch
 {
     /// <summary>
