@@ -3,8 +3,8 @@
 // Summary: View model used for creating and managing watch items in the UI.
 //          Includes form fields with validation and a list of category options 
 //          for drop down selection.
-// Author: [Clive Leddy]
-// Created: [2025-05-23]
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Combines WatchItemVM for form input and CategoryItemVM for rendering 
 //        category selections. Used in WatchesApp.Web.Views.Watches.
 // -----------------------------------------------------------------------------

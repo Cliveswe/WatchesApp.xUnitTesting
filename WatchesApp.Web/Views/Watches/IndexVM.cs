@@ -2,8 +2,8 @@
 // File: Category.cs
 // Summary: Model class representing a watch category with ID, name, and optional
 //          description. Used for grouping watches in the application.
-// Author: [Clive Leddy]
-// Created: [2025-05-23]
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Commonly linked with watch items to organize them by type.
 // -----------------------------------------------------------------------------
 

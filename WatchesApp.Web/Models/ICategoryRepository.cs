@@ -2,8 +2,8 @@
 // File: ICategoryRepository.cs
 // Summary: Interface defining repository methods to access watch categories,
 //          including retrieval by ID, name, and fetching all categories.
-// Author: [Clive Leddy]
-// Created: [2025-05-23]
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Enables abstraction for category data access within the WatchesApp.
 // -----------------------------------------------------------------------------
 

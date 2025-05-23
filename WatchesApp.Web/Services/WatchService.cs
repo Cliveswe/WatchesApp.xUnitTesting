@@ -2,8 +2,8 @@
 // File: WatchService.cs
 // Summary: Service class for managing a list of watches. Provides a thread-safe
 //          singleton instance with methods to add and retrieve watches.
-// Author: [Clive Leddy]
-// Created: [2025-05-23]
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Preloaded with sample watches. Implements IWatchRepository for DI use.
 // -----------------------------------------------------------------------------
 
