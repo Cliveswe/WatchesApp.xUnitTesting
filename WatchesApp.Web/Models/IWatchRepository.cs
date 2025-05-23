@@ -7,7 +7,6 @@
 // Notes: Meant to be implemented by services handling watch storage logic.
 // -----------------------------------------------------------------------------
 
-
 namespace WatchesApp.Web.Models;
 
 /// <summary>
