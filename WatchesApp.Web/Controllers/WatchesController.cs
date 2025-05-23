@@ -144,4 +144,9 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
         watchService.AddWatch(watch);
         return RedirectToAction(nameof(Index));
     }
+
+    [HttpGet("/throw")]
+    public IActionResult Throw() {
+        throw new Exception();
+    }
 }

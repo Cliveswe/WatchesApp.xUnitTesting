@@ -29,6 +29,12 @@ public class Program
         // Build the application where we can configure the HTTP request pipeline.
         var app = builder.Build();
 
+
+        if(!app.Environment.IsDevelopment()) {
+            app.UseExceptionHandler("/error/exception");
+            app.UseStatusCodePagesWithRedirects("/error/http/{0}");
+        }
+
         // Register middle-ware for the HTTP request pipeline.
         app.MapControllers();
 

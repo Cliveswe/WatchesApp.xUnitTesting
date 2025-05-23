@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="~/css/style.css" />
 }
 <div class="container text-center">
+    <a asp-controller="Watches" asp-action="Throw">Simulate a server error</a><br />
     <div class="row">
         
         @foreach(var watch in Model.WatchItems) {
