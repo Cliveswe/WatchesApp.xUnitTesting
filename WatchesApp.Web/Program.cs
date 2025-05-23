@@ -3,8 +3,8 @@
 // Summary: Entry point for the web application. Sets up services, middle-ware,
 //          and the HTTP request pipeline. Registers controllers, static files,
 //          and configures DI for watch and category services.
-// <author>Clive Leddy</author>
-// <created>2025-05-23</created>
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Standard ASP.NET Core startup pattern using minimal hosting model.
 // -----------------------------------------------------------------------------
 

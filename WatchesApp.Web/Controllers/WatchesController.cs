@@ -3,8 +3,8 @@
 // Summary: Handles watch-related HTTP requests like showing the main view,
 //          listing watches, and managing categories. Works with services to
 //          pull data and prepares it for the views.
-// <author>Clive Leddy</author>
-// <created>2025-05-23</created>
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: This controller connects the watch and category services to the UI.
 // -----------------------------------------------------------------------------
 
