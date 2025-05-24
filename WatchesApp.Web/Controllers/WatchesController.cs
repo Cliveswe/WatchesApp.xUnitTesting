@@ -148,7 +148,12 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
         // Ensure the ImageUrl is not null or empty before calling IsLinkValidAsync
         string imageUrl = viewModel.WatchItems.ImageUrl ?? string.Empty;
 
+        // If the image URL is invalid, use a default image URL
         bool isValid = await IsLinkValidAsync(imageUrl);
+
+        if(string.IsNullOrEmpty(viewModel.WatchItems.Description)) {
+            viewModel.WatchItems.Description = "No description provided.";
+        }
 
         Watch watch = new Watch {
             Brand = viewModel.WatchItems.Brand,
@@ -160,6 +165,7 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
             IsAvailable = viewModel.WatchItems.IsAvailable,
             Category = viewModel.WatchItems.Category ?? 0 // Default to 0 if null
         };
+
         return watch;
     }
 
