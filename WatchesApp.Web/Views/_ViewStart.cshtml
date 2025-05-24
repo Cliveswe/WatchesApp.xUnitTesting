@@ -3,4 +3,10 @@
     this file in individual View files, for example, by setting "@{ Layout = null;}"*@
     Layout = "_Layout";
  
+    // Set default values (can be overridden in individual views)
+    ViewBag.IndexActive = "";
+    ViewBag.IndexLink = "<a href=\"/\">List all watches</a>";
+
+    ViewBag.CreateActive = "";
+    ViewBag.CreateLink = "<a href=\"/create\">Add a watch</a>";
 }

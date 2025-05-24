@@ -14,9 +14,9 @@
 
 @{
     @* Inject HTML code into the layout razor.*@
-    ViewBag.IndexActive = "";
-    ViewBag.IndexLink = $"<a href=\"{Url.Action("Index", "Watches")}\">List all watches</a>";
-    ViewBag.CreateActive = "active";
+    // ViewBag.IndexActive = "";
+    // ViewBag.IndexLink = $"<a href=\"{Url.Action("Index", "Watches")}\">List all watches</a>";
+    ViewBag.CreateActive = "active"; // Highlight current menu item
     ViewBag.CreateLink = "Add new watch";
 }
 @* Allow this view to inject page-specific CSS styles. *@
