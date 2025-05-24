@@ -1,17 +1,23 @@
 # WatchesApp
 
-A Razor Pages web application for managing a collection of watches. Built with ASP.NET Core (.NET 9), this project demonstrates CR (just create and read from CRUD) operations, form validation, and dynamic UI rendering using Razor Pages.
-## Note
-The latest upload is in production mode.
+A MVC web application for managing a collection of watches. Built with ASP.NET Core (.NET 9), this project demonstrates CRUD operations, form validation, and dynamic UI rendering using Razor Pages.
+
+##Note: 
+This project is a simplified version of a watch management application and does not include a database. Instead, it uses in-memory data storage for demonstration purposes.
+It is designed to showcase the use of Razor Pages, form validation, and responsive design with Bootstrap.
+It is not intended for production use or real-world applications.
+only the CR (Create and Read) operations are implemented, with a focus on adding watches and displaying them in a list.
+This application is in production-ready state for https launch settings and can be used as a starting point for further development.
 
 ## Features
 
 - List all watches with details
 - Add new watches with brand, model, price, category, release year, image, and description
-- Edit and delete existing watches
-- Category and year selection with dropdowns
+- Category and year selection with drop-downs
 - Server-side and client-side validation
 - Responsive design with Bootstrap
+- Image URL validation with fall-back to a default image
+- Clean separation of concerns using repositories and view models
 
 ## Technologies
 
@@ -20,6 +26,14 @@ The latest upload is in production mode.
 - Entity Framework Core (if used for data access)
 - Bootstrap 5
 - jQuery & jQuery Validation
+
+## Project Structure
+
+- `WatchesApp.Web/` - Main Razor Pages web project
+- `Controllers/` - Handles HTTP requests and prepares view models
+- `Models/` - ViewModels and data models for watches and categories
+- `Views/` - Razor views for each page
+- `wwwroot/` - Static files (CSS, JS, images)
 
 ## Getting Started
 
@@ -37,13 +51,6 @@ The latest upload is in production mode.
 3. Build and run the project:
 
 4. Open your browser and navigate to `https://localhost:5001` (or the URL shown in the console).
-
-### Project Structure
-
-- `WatchesApp.Web/` - Main Razor Pages web project
-- `Views/` - Razor views for each page
-- `Models/` - ViewModels and data models
-- `wwwroot/` - Static files (CSS, JS, images)
 
 ## Contributing
 
