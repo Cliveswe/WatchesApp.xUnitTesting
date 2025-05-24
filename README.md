@@ -1,6 +1,8 @@
 # WatchesApp
 
 A Razor Pages web application for managing a collection of watches. Built with ASP.NET Core (.NET 9), this project demonstrates CR (just create and read from CRUD) operations, form validation, and dynamic UI rendering using Razor Pages.
+## Note
+The latest upload is in production mode.
 
 ## Features
 
