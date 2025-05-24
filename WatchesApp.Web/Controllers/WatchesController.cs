@@ -1,11 +1,12 @@
 ﻿// -----------------------------------------------------------------------------
 // File: WatchesController.cs
-// Summary: Handles watch-related HTTP requests like showing the main view,
+// Summary: Handles watch-related HTTP requests such as displaying the main view,
 //          listing watches, and managing categories. Works with services to
-//          pull data and prepares it for the views.
-// <author> [Clive Leddy] </author>
-// <created> [2025-05-23] </created>
-// Notes: This controller connects the watch and category services to the UI.
+//          retrieve data and prepares view models for the views.
+// <author> Clive Leddy </author>
+// <created> 2025-05-23 </created>
+// Notes: Connects watch and category services to the UI, enabling CR in CRUD
+//        operations and validating image URLs before saving.
 // -----------------------------------------------------------------------------
 
 using Microsoft.AspNetCore.Mvc;
@@ -118,7 +119,7 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
     /// <returns>An <see cref="IActionResult"/> that renders the creation view with validation errors if the model state is
     /// invalid, or redirects to the index page upon successful creation.</returns>
     [HttpPost("/create")]
-    public IActionResult Create(CreateVM viewModel) {
+    public async Task<IActionResult> Create(CreateVM viewModel) {
         // Need to resend the Create action
         if(!ModelState.IsValid) {
             // Rebuild dropdown data
@@ -129,20 +130,58 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
             return View(viewModel);
         }
 
-        // Need to cast the ViewModel to Watch.
+        Watch watch = await BuildWatchAsync(viewModel);
+
+        watchService.AddWatch(watch);
+        return RedirectToAction(nameof(Index));
+    }
+
+    /// <summary>
+    /// Asynchronously constructs a <see cref="Watch"/> object based on the provided view model.
+    /// </summary>
+    /// <remarks>The method validates the image URL provided in the view model. If the URL is invalid or null,  a
+    /// default placeholder image URL ("images/no-picture-Square210.png") is used instead.</remarks>
+    /// <param name="viewModel">The view model containing the data required to create the <see cref="Watch"/> object.</param>
+    /// <returns>A task that represents the asynchronous operation. The task result contains the constructed <see cref="Watch"/>
+    /// object.</returns>
+    private static async Task<Watch> BuildWatchAsync(CreateVM viewModel) {
+        // Ensure the ImageUrl is not null or empty before calling IsLinkValidAsync
+        string imageUrl = viewModel.WatchItems.ImageUrl ?? string.Empty;
+
+        bool isValid = await IsLinkValidAsync(imageUrl);
+
         Watch watch = new Watch {
             Brand = viewModel.WatchItems.Brand,
             Model = viewModel.WatchItems.Model,
             Price = viewModel.WatchItems.Price ?? 0, // Default to 0 if null
             Description = viewModel.WatchItems.Description,
-            ImageUrl = viewModel.WatchItems.ImageUrl,
+            ImageUrl = isValid ? imageUrl : "images/no-picture-Square210.png",
             ReleaseYear = viewModel.WatchItems.ReleaseYear,
             IsAvailable = viewModel.WatchItems.IsAvailable,
             Category = viewModel.WatchItems.Category ?? 0 // Default to 0 if null
         };
+        return watch;
+    }
 
-        watchService.AddWatch(watch);
-        return RedirectToAction(nameof(Index));
+    /// <summary>
+    /// Determines whether the specified URL is valid and accessible by performing an HTTP GET request.
+    /// </summary>
+    /// <remarks>This method performs an HTTP GET request to the specified URL with a timeout of 5 seconds. If
+    /// the request fails (e.g., due to a timeout, network error, or invalid URL), the method returns <see
+    /// langword="false"/>.</remarks>
+    /// <param name="url">The URL to validate. Must be a well-formed, absolute URI.</param>
+    /// <returns><see langword="true"/> if the URL is accessible and the server responds with a success status code (2xx);
+    /// otherwise, <see langword="false"/>.</returns>
+    private static async Task<bool> IsLinkValidAsync(string url) {
+        try {
+            using HttpClient client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(5);
+
+            HttpResponseMessage response = await client.GetAsync(url);
+            return response.IsSuccessStatusCode;
+        } catch {
+            return false;
+        }
     }
 
     [HttpGet("/throw")]

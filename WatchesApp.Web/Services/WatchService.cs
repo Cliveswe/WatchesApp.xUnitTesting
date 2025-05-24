@@ -82,8 +82,12 @@ public class WatchService : IWatchRepository
         int N = NextId;
 
         watch.Id = N;
+        if(watch.ImageUrl == null) {
+            watch.ImageUrl = "/images/no-picture-Square210.png"; // Default image URL if none provided
+        }
         watches.Add(watch);
     }
+
 
     /// <summary>
     /// Retrieves all watches in the collection, sorted by brand name in ascending order.
