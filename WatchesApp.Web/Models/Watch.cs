@@ -87,5 +87,5 @@ public class Watch
     /// Gets or sets the category identifier for the item.
     /// </summary>
     [Display(Name = "Select from category")]
-    public int Category { get; set; } = default; // e.g., Analog, Digital, Smart, etc.
+    public int Category { get; set; } = default!; // e.g., Analog, Digital, Smart, etc.
 }
