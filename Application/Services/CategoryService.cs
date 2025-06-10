@@ -8,17 +8,6 @@
 // Notes: Thread-safe singleton with a static category list initialized at startup.
 // -----------------------------------------------------------------------------
 
-
-// -----------------------------------------------------------------------------
-// File: CategoryService.cs
-// Summary: Singleton service implementing ICategoryRepository to manage and provide
-//          predefined watch categories, with methods to get all categories or 
-//          search by ID or name.
-// <author> [Clive Leddy] </author>
-// <created> [2025-05-23] </created>
-// Notes: Thread-safe singleton with a static category list initialized at startup.
-// -----------------------------------------------------------------------------
-
 using Application.Interfaces;
 using Domain.Entities;
 

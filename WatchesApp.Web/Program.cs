@@ -19,10 +19,12 @@ public class Program
     public static void Main(string[] args) {
         var builder = WebApplication.CreateBuilder(args);
 
-        //Add the singleton services to the IServaceCollection
+        // Add the transient services to the IWatchRepository
+        // This allows for a new instance of WatchService to be created each time it is requested.
         builder.Services.AddTransient<IWatchRepository, WatchService>();
         //Add the singleton services to the ICategoryRepository
         builder.Services.AddSingleton<ICategoryRepository, CategoryService>();
+        //Add the singleton services to the IWatchRepository
         builder.Services.AddSingleton<IWatchRepository, WatchRepository>();
 
         // Register services to the container that supports MVC pattern.

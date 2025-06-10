@@ -7,16 +7,6 @@
 // Notes: Meant to be implemented by services handling watch storage logic.
 // -----------------------------------------------------------------------------
 
-
-// -----------------------------------------------------------------------------
-// File: IWatchRepository.cs
-// Summary: Interface for watch data operations — allows fetching all watches
-//          and adding new ones to the collection.
-// <author> [Clive Leddy] </author>
-// <created> [2025-05-23] </created>
-// Notes: Meant to be implemented by services handling watch storage logic.
-// -----------------------------------------------------------------------------
-
 using Domain.Entities;
 
 namespace Application.Interfaces;

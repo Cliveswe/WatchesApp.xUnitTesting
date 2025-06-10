@@ -7,16 +7,6 @@
 // Notes: Includes validation attributes for form handling in Razor views.
 // -----------------------------------------------------------------------------
 
-
-// -----------------------------------------------------------------------------
-// File: Watch.cs
-// Summary: Data model representing a watch. Includes properties for brand,
-//          model, price, availability, and more. Used for form input and display.
-// <author> [Clive Leddy] </author>
-// <created> [2025-05-23] </created>
-// Notes: Includes validation attributes for form handling in Razor views.
-// -----------------------------------------------------------------------------
-
 using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Entities;

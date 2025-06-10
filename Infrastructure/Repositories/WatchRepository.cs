@@ -5,6 +5,8 @@
 //          by higher-level services.
 // <author> [Clive Leddy] </author>
 // <created> [2025-05-23] </created>
+// <remarks> Updated [2025-06-10] Class changed from a service class to a repository
+// class </remarks>
 // Notes: Implements IWatchRepository for dependency injection. Maintains a
 //        preloaded in-memory list of sample watches. No longer exposes or manages
 //        service-level business logic or singleton access; focuses solely on data
