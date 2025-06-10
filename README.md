@@ -81,16 +81,16 @@ The solution has been refactored to follow a clearer separation of concerns betw
 - Manages data
 - Depends on the **Domain** project
 - **Folder Structure Example:**
-        Customer/
-            Services/
-                CustomerService
-            Interfaces/
-                ICustomerService
-        Product/
-            Services/
-                ProductService
-            Interfaces/
-                IProductService
+  - Customer/
+    ├── Services/
+    │ └──      CustomerService
+      └──  Interfaces/
+    │ └──    ICustomerService
+  - Product/
+    ├── Services/
+    │ └── ProductService
+    └── Interfaces/
+    └── IProductService
 
 ---
 
@@ -102,10 +102,10 @@ The solution has been refactored to follow a clearer separation of concerns betw
 - Handles data persistence
 - Depends on the **Application** project (and indirectly on **Domain**)
 - **Folder Structure Example:**
-        Persistence/
-            Repositories
-        Services/ (optional)
-        DependencyInjection/ (optional)
+  - Persistence/
+     └── Repositories
+  - Services/ (optional)
+    └── DependencyInjection/ (optional)
  
 ---
 
