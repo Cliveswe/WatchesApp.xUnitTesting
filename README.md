@@ -107,7 +107,7 @@ The solution has been refactored to follow a clearer separation of concerns betw
   Persistence/
   └── Repositories 
   Services/ (optional)
-  └── DependencyInjection/ (optional) </code></pre>
+  DependencyInjection/ (optional) </code></pre>
  
 ---
 
