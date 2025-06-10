@@ -80,13 +80,13 @@ The solution has been refactored to follow a clearer separation of concerns betw
 - Interfaces for services and repositories
 - Manages data
 - Depends on the **Domain** project
-- **Folder Structure Example:**
-  - Customer/
+### Folder Structure Example:
+  Customer/
     ├── Services/
     │ └──      CustomerService
       └──  Interfaces/
     │ └──    ICustomerService
-  - Product/
+  Product/
     ├── Services/
     │ └── ProductService
     └── Interfaces/
@@ -101,10 +101,10 @@ The solution has been refactored to follow a clearer separation of concerns betw
 - May contain services (technical dependencies only – no business logic)
 - Handles data persistence
 - Depends on the **Application** project (and indirectly on **Domain**)
-- **Folder Structure Example:**
-  - Persistence/
+### Folder Structure Example:**
+  Persistence/
      └── Repositories
-  - Services/ (optional)
+  Services/ (optional)
     └── DependencyInjection/ (optional)
  
 ---
