@@ -9,6 +9,7 @@
 //        operations and validating image URLs before saving.
 // -----------------------------------------------------------------------------
 
+using Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 using WatchesApp.Web.Models;
 using WatchesApp.Web.Views.Watches;

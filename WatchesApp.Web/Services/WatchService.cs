@@ -7,6 +7,7 @@
 // Notes: Preloaded with sample watches. Implements IWatchRepository for DI use.
 // -----------------------------------------------------------------------------
 
+using Domain.Entities;
 using WatchesApp.Web.Models;
 
 namespace WatchesApp.Web.Services;

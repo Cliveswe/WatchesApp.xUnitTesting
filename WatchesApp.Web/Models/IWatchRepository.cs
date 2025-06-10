@@ -7,6 +7,8 @@
 // Notes: Meant to be implemented by services handling watch storage logic.
 // -----------------------------------------------------------------------------
 
+using Domain.Entities;
+
 namespace WatchesApp.Web.Models;
 
 /// <summary>
