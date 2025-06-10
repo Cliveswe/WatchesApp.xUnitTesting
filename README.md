@@ -84,13 +84,13 @@ The solution has been refactored to follow a clearer separation of concerns betw
   Customer/ 
   ├── Services/ 
   │  └── CustomerService.cs 
-  └── Interfaces/ 
-  └── ICustomerService.cs 
+  ├── Interfaces/ 
+  │  └── ICustomerService.cs 
   Product/ 
   ├── Services/ 
   │  └── ProductService.cs 
-  └── Interfaces/ 
-  └── IProductService.cs 
+  ├── Interfaces/ 
+  │  └── IProductService.cs 
    </code></pre>
 
 ###
