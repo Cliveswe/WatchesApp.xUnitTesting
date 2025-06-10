@@ -59,3 +59,76 @@ Contributions are welcome! Please open issues or submit pull requests for improv
 ## License
 
 This project is licensed under the MIT License.
+
+
+## Solution Structure Update
+
+The solution has been refactored to follow a clearer separation of concerns between service and repository layers. The following changes have been made:
+
+### Clean Clean Architecture Structure and Design
+- **WatchesApp.Domain**
+    • Entities `this was previously call Models`
+    • Represents data
+    • No dependencies
+
+- **WatchesApp.Application**
+    • Services (business workflows and business logic)
+    • Interfaces for services and repositories
+    • Manages data
+    • Dependent on the Domain project
+    • Folder examples
+        Customer
+            Services
+                CustomerService
+            Interfaces
+                ICustomerService
+        Product
+            Services
+                ProductService
+            Interfaces
+                IProductService
+
+- **WatchesApp.Infrastructure**
+    • Repositories (implementations for e.g., Entity Framework, `not yet implemented`)
+    • Unit of Work classes (`not yet implemented`)
+    • Coordinates write operations from multiple repositories into a single transaction
+    • Possibly services (that implement technical dependencies – no business logic)
+    • Data persistence
+    • Dependent on the Application project (indirectly dependent on the domain)
+    • Folder examples
+        Persistence
+            Repositories
+        Services (possible)
+        DependencyInjection (possible)
+
+- **WatchesApp.Presentation**
+    • Presentation layer, such as an MVC application
+    • Presentation of the data
+    • Dependent on the Infrastructure project and (indirectly dependent on the Application- and domain-projects)
+
+### Projects and Key Files
+
+- **Application**
+  - `Services/WatchService.cs`  
+    Provides business logic and acts as a wrapper around the repository for watch management.
+  - `Services/CategoryService.cs`  
+    Manages watch categories.
+
+- **Infrastructure**
+  - `Repositories/WatchRepository.cs`  
+    Handles in-memory storage and retrieval of watch entities. Implements `IWatchRepository`.
+
+- **Domain**
+  - `Entities/Watch.cs`  
+    Represents the watch entity.
+  - `Entities/Category.cs`  
+    Represents the category entity.
+
+- **WatchesApp.Web**
+  - (Razor Pages, UI, and web entry point)
+
+### Summary of Changes
+
+- The `WatchService` class now delegates data access to `IWatchRepository` and focuses on business logic.
+- The `WatchRepository` class is responsible for data persistence and retrieval, and is registered for dependency injection.
+- The solution structure now clearly separates application logic (services) from infrastructure concerns (repositories).
