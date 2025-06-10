@@ -83,14 +83,14 @@ The solution has been refactored to follow a clearer separation of concerns betw
 <pre><code>### Folder Structure Example 
   Customer/ 
   ├── Services/ 
-  │  └── CustomerService.cs 
+     └── CustomerService.cs 
   ├── Interfaces/ 
-  │  └── ICustomerService.cs 
+     └── ICustomerService.cs 
   Product/ 
   ├── Services/ 
-  │  └── ProductService.cs 
+     └── ProductService.cs 
   ├── Interfaces/ 
-  │  └── IProductService.cs 
+     └── IProductService.cs 
    </code></pre>
 
 ###
