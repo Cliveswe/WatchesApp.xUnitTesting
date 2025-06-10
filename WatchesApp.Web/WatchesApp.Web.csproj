@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
     <Folder Include="wwwroot\scripts\lib\" />
   </ItemGroup>
 

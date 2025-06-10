@@ -8,8 +8,8 @@
 // Notes: Standard ASP.NET Core startup pattern using minimal hosting model.
 // -----------------------------------------------------------------------------
 
-using WatchesApp.Web.Models;
-using WatchesApp.Web.Services;
+using Application.Interfaces;
+using Application.Services;
 
 namespace WatchesApp.Web;
 

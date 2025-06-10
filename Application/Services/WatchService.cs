@@ -7,10 +7,10 @@
 // Notes: Preloaded with sample watches. Implements IWatchRepository for DI use.
 // -----------------------------------------------------------------------------
 
+using Application.Interfaces;
 using Domain.Entities;
-using WatchesApp.Web.Models;
 
-namespace WatchesApp.Web.Services;
+namespace Application.Services;
 
 /// <summary>
 /// Provides functionality for managing a collection of watches, including adding new watches, retrieving all watches,
@@ -24,8 +24,8 @@ public class WatchService : IWatchRepository
 {
     // Singleton instance of WatchService that is thread-safe and lazy initialization.
     private static WatchService? instance;
-    private static readonly object lockObj = new object();
-    private CategoryService categoryService = CategoryService.GetInstance;
+    private static readonly object lockObj = new();
+    private readonly CategoryService categoryService = CategoryService.GetInstance;
 
     /// <summary>
     /// Gets the singleton instance of the <see cref="WatchService"/> class.
@@ -52,8 +52,8 @@ public class WatchService : IWatchRepository
     /// description, image URL, release year, availability status, and category. The collection is initialized with a
     /// variety  of watches, including luxury, dress, sports, and smart-watches, to provide a diverse
     /// selection.</remarks>
-    private List<Watch> watches = new List<Watch>
-{
+    private readonly List<Watch> watches = [
+
     new Watch { Id = 1, Brand = "Nomos", Model = "Club Sport neomatik", Price = 21000m, Description = "Chronograph with minimalist Bauhaus aesthetics.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.nomos-glashuette.com%2Fmedia%2Fimage%2F3e%2F72%2F93%2F800xauto-q80-bg238238238%2F0782_club_sport_neomatik_42_datum_blau_front_masked.jpg&f=1&nofb=1&ipt=d88422cf1281e0abf0230d1f4263e49b50bede8f02eeb6d043568ddab1fb74fa", ReleaseYear = 2022, IsAvailable = true, Category = 1},
     new Watch { Id = 2, Brand = "Frederique Constant", Model = "Classics Index", Price = 9950m, Description = "Elegant Swiss dress watch.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.B2386un1OvR1Ec2p2g--jQHaMF%26pid%3DApi&f=1&ipt=ad89465a5f65775f3d53f229cb89715a42f09c6bcd2507639d4f056a4fcdc48d", ReleaseYear = 2021, IsAvailable = true, Category = 1},
     new Watch { Id = 3, Brand = "Samsung", Model = "Galaxy Watch 6", Price = 3990m, Description = "Advanced smartwatch with health tracking.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.droid-life.com%2Fwp-content%2Fuploads%2F2023%2F06%2FGalaxy-Watch-6-Classic-980x653.jpg&f=1&nofb=1&ipt=cc9a519a34d6c6d636d479ab002c789fd40ada949f76329b37cb586aa3774a79", ReleaseYear = 2023, IsAvailable = true, Category = 3},
@@ -66,7 +66,7 @@ public class WatchService : IWatchRepository
     new Watch { Id = 10, Brand = "Citizen", Model = "Eco-Drive Chronograph", Price = 3750m, Description = "Solar-powered chronograph.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi5.walmartimages.com%2Fasr%2Fec25b544-ae3a-4822-a85c-59eff685ca45.647bbaedc7c2296bc115f1a3c4f14060.jpeg%3FodnWidth%3D1000%26odnHeight%3D1000%26odnBg%3Dffffff&f=1&nofb=1&ipt=f6ea445cfc3dd2583563aae7a80356d47d579425c6ab10c1f7bf9e2c1fec27bd", ReleaseYear = 2020, IsAvailable = false, Category = 1},
     new Watch {Id = 11, Brand ="Grand Seiko", Model ="SBGA413", Price = 65000m, Description ="Heritage collection a dial inspired by the cherry blossoms of spring in Japan", ImageUrl="https://www.grand-seiko.com/us-en/-/media/Images/Product--Image/All/GrandSeiko/2022/02/19/21/50/SBGA413G/SBGA413G.png", ReleaseYear= 2022 ,IsAvailable= false, Category=4},
     new Watch {Id = 12, Brand ="Ressence", Model ="Type 3 Black", Price = 544500m, Description ="Re-imagines traditional watch design through innovative use of oil-filled chambers and magnetic transmission systems.", ImageUrl="https://feldmarwatch.com/wp-content/uploads/2024/02/type-35.jpg", ReleaseYear= 2013 ,IsAvailable= false, Category=1}
-};
+];
 
     /// <summary>
     /// Gets the next available unique identifier for a new watch.
