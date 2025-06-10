@@ -33,7 +33,7 @@ public class CategoryService : ICategoryRepository
     /// <remarks>This object is intended to be used as a lock for critical sections of code that require 
     /// mutual exclusion to prevent race conditions. Ensure that all threads use this object consistently for locking
     /// to maintain proper synchronization.</remarks>
-    private static readonly object lockObj = new object();
+    private static readonly object lockObj = new();
 
     /// <summary>
     /// Gets the singleton instance of the <see cref="CategoryService"/> class.
@@ -42,8 +42,7 @@ public class CategoryService : ICategoryRepository
         get {
             if(instance == null) {
                 lock(lockObj) {
-                    if(instance == null)
-                        instance = new CategoryService();
+                    instance ??= new CategoryService();
                 }
             }
             return instance;
@@ -56,12 +55,12 @@ public class CategoryService : ICategoryRepository
     /// <remarks>Each category in the collection includes an identifier, a name, and a description that provides
     /// additional details about the category. This collection is initialized with a set of default categories, such as
     /// "Analog", "Digital", "Smart", and "Hybrid".</remarks>
-    private List<Category> categories = new List<Category> {
+    private readonly List<Category> categories = [
         new Category { Id = 1, Name = "Analog", Description = "Containing internal moving parts that need regular servicing."},
         new Category { Id = 2, Name = "Digital", Description = "Contains a battery that needs replacing when depleted."},
         new Category { Id = 3, Name = "Smart", Description ="Requires to be connected to a mobile phone or requires a sim-card."},
         new Category { Id = 4, Name = "Hybrid", Description ="It combines the traditional mechanical energy source (wound mainspring) with a quartz-based regulation system."},
-    };
+    ];
 
     /// <summary>
     /// Retrieves all categories in the collection.
