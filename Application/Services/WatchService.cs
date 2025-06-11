@@ -43,4 +43,14 @@ public class WatchService(IWatchRepository repository) : IWatchRepository
     public IEnumerable<Watch> GetAllWatches() {
         return repository.GetAllWatches();
     }
+
+    /// <summary>
+    /// Retrieves a watch by its unique identifier.
+    /// </summary>
+    /// <param name="watchId">The unique identifier of the watch to retrieve. Must be a valid, non-negative integer.</param>
+    /// <returns>The <see cref="Watch"/> object corresponding to the specified <paramref name="watchId"/>.</returns>
+    /// <exception cref="ArgumentException">Thrown if no watch is found with the specified <paramref name="watchId"/>.</exception>
+    public Watch GetWatchByID(int watchId) {
+        return repository.GetWatchByID(watchId) ?? throw new ArgumentException($"No watch found with ID {watchId}", nameof(watchId));
+    }
 }

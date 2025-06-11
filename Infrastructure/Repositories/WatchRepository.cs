@@ -105,4 +105,8 @@ public class WatchRepository : IWatchRepository
         watches.Sort((x, y) => x.Brand.CompareTo(y.Brand));
         return watches;
     }
+
+    public Watch? GetWatchByID(int watchId) {
+        return watches.SingleOrDefault(watch => watch.Id == watchId);
+    }
 }

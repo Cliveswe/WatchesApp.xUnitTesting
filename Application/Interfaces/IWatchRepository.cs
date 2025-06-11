@@ -35,4 +35,14 @@ public interface IWatchRepository
     /// <paramref name="watch"/> parameter is properly initialized before calling this method.</remarks>
     /// <param name="watch">The watch to add. Must not be <see langword="null"/>.</param>
     void AddWatch(Watch watch);
+
+    /// <summary>
+    /// Retrieves a watch by its unique identifier.
+    /// </summary>
+    /// <remarks>Use this method to fetch details of a specific watch from the data source.  Ensure that the
+    /// <paramref name="watchId"/> provided is valid and corresponds to an existing watch.</remarks>
+    /// <param name="watchId">The unique identifier of the watch to retrieve. Must be a positive integer.</param>
+    /// <returns>The <see cref="Watch"/> object corresponding to the specified <paramref name="watchId"/>,  or <see
+    /// langword="null"/> if no watch with the given identifier exists.</returns>
+    Watch GetWatchByID(int watchId);
 }
