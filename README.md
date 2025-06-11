@@ -143,3 +143,33 @@ The solution has been refactored to follow a clearer separation of concerns betw
 - The `WatchService` class now delegates data access to `IWatchRepository` and focuses on business logic.
 - The `WatchRepository` class is responsible for data persistence and retrieval, and is registered for dependency injection.
 - The solution structure now clearly separates application logic (services) from infrastructure concerns (repositories).
+
+
+## Console Project: WatchesApp.Console
+
+The solution now includes a console application project for interacting with the watch collection via the terminal.
+
+### Project: `WatchesApp.Console`
+
+- **Purpose:**  
+  Provides a simple command-line interface for listing all watches and retrieving details of a specific watch by ID. This project demonstrates the use of the service and repository layers outside of the web context.
+
+- **Key File:**  
+  - `Program.cs`  
+    - Entry point for the console application.
+    - Lists all watches (sorted by ID, brand, and model).
+    - Prompts the user to enter a watch ID and displays detailed information for the selected watch.
+    - Demonstrates usage of `WatchService` and `WatchRepository`.
+
+- **How it works:**  
+  - On launch, the application displays all available watches.
+  - The user is prompted to enter a watch ID to view its details.
+  - The application outputs the selected watch’s brand, model, price, release year, and availability.
+
+- **Dependencies:**  
+  - Uses the same `Application` and `Infrastructure` layers as the Razor Pages project, ensuring consistent business logic and data access.
+
+---
+
+**Note:**  
+This console project is useful for testing and demonstration purposes, and can be extended for additional command-line operations as needed.
