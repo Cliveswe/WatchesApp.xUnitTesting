@@ -23,7 +23,8 @@ public class Program
         // This allows for a new instance of WatchService to be created each time it is requested.
         builder.Services.AddTransient<IWatchRepository, WatchService>();
         //Add the singleton services to the ICategoryRepository
-        builder.Services.AddSingleton<ICategoryRepository, CategoryService>();
+        //builder.Services.AddSingleton<ICategoryRepository, CategoryService>();
+        builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
         //Add the singleton services to the IWatchRepository
         builder.Services.AddSingleton<IWatchRepository, WatchRepository>();
 
