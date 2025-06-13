@@ -1,4 +1,16 @@
-﻿using Application.Interfaces;
+﻿// -----------------------------------------------------------------------------
+// File: CategoryRepository.cs
+// Summary: Provides a thread-safe singleton repository for accessing and searching
+//          predefined watch categories. Supports getting all categories, or finding
+//          by ID or name.
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
+// <remarks> Updated [2025-06-13] Added LINQ-based sorting and case-insensitive name search. </remarks>
+// Notes: Uses an in-memory list of default categories. Designed for use in Razor
+//        Pages projects and implements ICategoryRepository.
+// -----------------------------------------------------------------------------
+
+using Application.Interfaces;
 using Domain.Entities;
 
 namespace Infrastructure.Repositories;
