@@ -2,7 +2,7 @@
 // File: WatchesApplicationTests.cs
 // Summary: Contains unit tests for the WatchService class, verifying its behavior
 //          and functionality using a mocked repository.
-// <author> [Your Name] </author>
+// <author> [Clive Leddy] </author>
 // <created> [2024-06-14] </created>
 // <remarks> Updated [2024-06-14] Added tests for add, retrieve by ID, and retrieve all watches. </remarks>
 // Notes: Uses RepositoryMocks for simulating repository behavior in xUnit tests.
