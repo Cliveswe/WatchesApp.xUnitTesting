@@ -13,7 +13,6 @@
 //        persistence and retrieval.
 // ----------------------------------------------------------------------------
 using Application.Interfaces;
-using Application.Services;
 using Domain.Entities;
 
 namespace Infrastructure.Repositories;
@@ -31,7 +30,6 @@ public class WatchRepository : IWatchRepository
     // Singleton instance of WatchService that is thread-safe and lazy initialization.
     private static WatchRepository? instance;
     private static readonly object lockObj = new();
-    private readonly CategoryService categoryService = CategoryService.GetInstance;
 
     /// <summary>
     /// Gets the singleton instance of the <see cref="WatchRepository"/> class.
