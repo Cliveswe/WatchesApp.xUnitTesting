@@ -12,7 +12,7 @@ using Application.Interfaces;
 using Domain.Entities;
 using Moq;
 
-namespace WatchesApp.Web.xUnitTests.Mocks;
+namespace WatchesApp.Mocks;
 
 /// <summary>
 /// Provides static methods for creating mock implementations of repository interfaces used in testing scenarios.
@@ -52,8 +52,8 @@ public class RepositoryMocks
             new Watch { Id = 8, Brand = "Tag Heuer", Model = "Carrera", Price = 32000m, Description = "Luxury sports chronograph.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmagazine.chrono24.com%2Fcdn-cgi%2Fimage%2Ff%3Dauto%2Cmetadata%3Dnone%2Cq%3D65%2F2023%2F06%2FHigh-Quality-JPG-CloseUp-2_V2_1-1-1-original.jpeg&f=1&nofb=1&ipt=35579b76e09f6da24a4c2e436bf5ab82bcb2e687b38ef79fc1d68f8dd8b27abc", ReleaseYear = 2021, IsAvailable = true, Category = 1},
             new Watch { Id = 9, Brand = "Garmin", Model = "Fenix 7", Price = 6990m, Description = "GPS multi-sport smartwatch.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.garmin.co.kr%2Fm%2Fkr%2Fg%2Fproducts%2Ffenix-7-solar-gray-cf-lg.jpg&f=1&nofb=1&ipt=5bc1ebebd1ef4ca31ef67215a38856b7cc11905867075ec558d94fe677ebc762", ReleaseYear = 2023, IsAvailable = true, Category = 3},
             new Watch { Id = 10, Brand = "Citizen", Model = "Eco-Drive Chronograph", Price = 3750m, Description = "Solar-powered chronograph.", ImageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi5.walmartimages.com%2Fasr%2Fec25b544-ae3a-4822-a85c-59eff685ca45.647bbaedc7c2296bc115f1a3c4f14060.jpeg%3FodnWidth%3D1000%26odnHeight%3D1000%26odnBg%3Dffffff&f=1&nofb=1&ipt=f6ea445cfc3dd2583563aae7a80356d47d579425c6ab10c1f7bf9e2c1fec27bd", ReleaseYear = 2020, IsAvailable = false, Category = 1},
-            new Watch {Id = 11, Brand ="Grand Seiko", Model ="SBGA413", Price = 65000m, Description ="Heritage collection a dial inspired by the cherry blossoms of spring in Japan", ImageUrl="https://www.grand-seiko.com/us-en/-/media/Images/Product--Image/All/GrandSeiko/2022/02/19/21/50/SBGA413G/SBGA413G.png", ReleaseYear= 2022 ,IsAvailable= false, Category=4},
-            new Watch {Id = 12, Brand ="Ressence", Model ="Type 3 Black", Price = 544500m, Description ="Re-imagines traditional watch design through innovative use of oil-filled chambers and magnetic transmission systems.", ImageUrl="https://feldmarwatch.com/wp-content/uploads/2024/02/type-35.jpg", ReleaseYear= 2013 ,IsAvailable= false, Category=1}
+           // new Watch {Id = 11, Brand ="Grand Seiko", Model ="SBGA413", Price = 65000m, Description ="Heritage collection a dial inspired by the cherry blossoms of spring in Japan", ImageUrl="https://www.grand-seiko.com/us-en/-/media/Images/Product--Image/All/GrandSeiko/2022/02/19/21/50/SBGA413G/SBGA413G.png", ReleaseYear= 2022 ,IsAvailable= false, Category=4},
+           // new Watch {Id = 12, Brand ="Ressence", Model ="Type 3 Black", Price = 544500m, Description ="Re-imagines traditional watch design through innovative use of oil-filled chambers and magnetic transmission systems.", ImageUrl="https://feldmarwatch.com/wp-content/uploads/2024/02/type-35.jpg", ReleaseYear= 2013 ,IsAvailable= false, Category=1}
             ];
 
         // Set the PieId for each pie.
@@ -69,15 +69,15 @@ public class RepositoryMocks
         // This is necessary to simulate the behavior of the repository in the tests.
         // This is a workaround to ensure that the GetPieById method returns the correct pie.
         // This is necessary because the GetPieById method is not set in the original pie data and we need it for testing purposes.
-        mockWatchRepository.Setup(repo => repo.GetWatchByID(It.IsAny<int>())).Returns((int id) => watches.FirstOrDefault(w => w.Id == id));
+        mockWatchRepository.Setup(repo => repo.GetWatchByID(It.IsAny<int>())).Returns(watches[0]);
 
         mockWatchRepository.Setup(repo => repo.AddWatch(It.IsAny<Watch>()));
-        mockWatchRepository.Setup(repo => repo.AddWatch(It.IsAny<Watch>()))
-            .Callback<Watch>(watch => {
-                int nextId = watches.Count > 0 ? watches.Max(w => w.Id) + 1 : 1;
-                watch.Id = nextId;
-                watches.Add(watch);
-            });
+        //    mockWatchRepository.Setup(repo => repo.AddWatch(It.IsAny<Watch>()))
+        //        .Callback<Watch>(watch => {
+        //            int nextId = watches.Count > 0 ? watches.Max(w => w.Id) + 1 : 1;
+        //            watch.Id = nextId;
+        //            watches.Add(watch);
+        //        });
         return mockWatchRepository;
     }
 

@@ -51,6 +51,10 @@ public class WatchService(IWatchRepository repository) : IWatchRepository
     /// <returns>The <see cref="Watch"/> object corresponding to the specified <paramref name="watchId"/>.</returns>
     /// <exception cref="ArgumentException">Thrown if no watch is found with the specified <paramref name="watchId"/>.</exception>
     public Watch GetWatchByID(int watchId) {
-        return repository.GetWatchByID(watchId) ?? throw new ArgumentException($"No watch found with ID {watchId}", nameof(watchId));
+        var watch = repository.GetWatchByID(watchId);
+        if(watch == null) {
+            throw new ArgumentException($"No watch found with ID {watchId}", nameof(watchId));
+        }
+        return watch;
     }
 }

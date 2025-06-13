@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchesApp.Terminal", "Watc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchesApp.Web.xUnitTests", "WatchesApp.Web.xUnitTests\WatchesApp.Web.xUnitTests.csproj", "{9FD2D42C-0A2A-4585-B931-6D1AC7547D36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchesApp.Application.xUnitTests", "WatchesApp.Application.xUnitTests\WatchesApp.Application.xUnitTests.csproj", "{2E6E884F-9949-42CC-B391-76D0F473B4FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{9FD2D42C-0A2A-4585-B931-6D1AC7547D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FD2D42C-0A2A-4585-B931-6D1AC7547D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FD2D42C-0A2A-4585-B931-6D1AC7547D36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6E884F-9949-42CC-B391-76D0F473B4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6E884F-9949-42CC-B391-76D0F473B4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6E884F-9949-42CC-B391-76D0F473B4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6E884F-9949-42CC-B391-76D0F473B4FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

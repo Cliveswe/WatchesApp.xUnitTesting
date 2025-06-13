@@ -40,9 +40,7 @@ public class WatchRepository : IWatchRepository
         get {
             if(instance == null) {
                 lock(lockObj) {
-                    if(instance == null) {
-                        instance = new WatchRepository();
-                    }
+                    instance ??= new WatchRepository();
                 }
             }
             return instance;
@@ -87,9 +85,7 @@ public class WatchRepository : IWatchRepository
         int N = NextId;
 
         watch.Id = N;
-        if(watch.ImageUrl == null) {
-            watch.ImageUrl = "/images/no-picture-Square210.png"; // Default image URL if none provided
-        }
+        watch.ImageUrl ??= "/images/no-picture-Square210.png"; // Default image URL if none provided
         watches.Add(watch);
     }
 
@@ -100,11 +96,11 @@ public class WatchRepository : IWatchRepository
     /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="Watch"/> objects, sorted by brand name in ascending order.</returns>
     public IEnumerable<Watch> GetAllWatches() {
         // Sort the watches by brand name in ascending order.
-        Comparison<Watch> comparison = (x, y) => x.Brand.CompareTo(y.Brand);
-        watches.Sort(comparison);
+        watches.Sort((x, y) => x.Brand.CompareTo(y.Brand));
         return watches;
     }
 
-    public Watch? GetWatchByID(int watchId) => watches.SingleOrDefault(watch => watch.Id == watchId);
-
+    public Watch? GetWatchByID(int watchId) {
+        return watches.SingleOrDefault(watch => watch.Id == watchId);
+    }
 }
