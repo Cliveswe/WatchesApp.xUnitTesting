@@ -100,11 +100,11 @@ public class WatchRepository : IWatchRepository
     /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="Watch"/> objects, sorted by brand name in ascending order.</returns>
     public IEnumerable<Watch> GetAllWatches() {
         // Sort the watches by brand name in ascending order.
-        watches.Sort((x, y) => x.Brand.CompareTo(y.Brand));
+        Comparison<Watch> comparison = (x, y) => x.Brand.CompareTo(y.Brand);
+        watches.Sort(comparison);
         return watches;
     }
 
-    public Watch? GetWatchByID(int watchId) {
-        return watches.SingleOrDefault(watch => watch.Id == watchId);
-    }
+    public Watch? GetWatchByID(int watchId) => watches.SingleOrDefault(watch => watch.Id == watchId);
+
 }
