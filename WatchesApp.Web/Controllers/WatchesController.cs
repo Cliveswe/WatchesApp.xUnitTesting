@@ -3,8 +3,8 @@
 // Summary: Handles watch-related HTTP requests such as displaying the main view,
 //          listing watches, and managing categories. Works with services to
 //          retrieve data and prepares view models for the views.
-// <author> Clive Leddy </author>
-// <created> 2025-05-23 </created>
+// <author> [Clive Leddy] </author>
+// <created> [2025-05-23] </created>
 // Notes: Connects watch and category services to the UI, enabling CR in CRUD
 //        operations and validating image URLs before saving.
 // -----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
     public IActionResult Index() {
 
         var watches = watchService.GetAllWatches();
-        var categries = categoryService.GetAllCategories();
+        var categories = categoryService.GetAllCategories();
 
         var ViewModel = new IndexVM {
             WatchItems = watches
@@ -58,7 +58,7 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
             ReleaseYear = o.ReleaseYear,
             Category = o.Category
         }).ToList(),
-            CategoryItems = categries
+            CategoryItems = categories
         .Select(o => new IndexVM.CategoryItemVM {
             Id = o.Id,
             Name = o.Name,
@@ -67,7 +67,7 @@ public class WatchesController(IWatchRepository watchService, ICategoryRepositor
         };
 
 
-        // return View((watches, categries));
+        // return View((watches, categories));
         return View(ViewModel);
     }
 
