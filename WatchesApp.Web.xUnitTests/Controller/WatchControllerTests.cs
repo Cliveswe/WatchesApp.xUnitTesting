@@ -268,6 +268,9 @@ public class WatchControllerTests
 
         var controller = new WatchesController(mockWatchRepo.Object, mockCategoryRepo.Object);
 
+        // Mocking the category repository to return an empty list of categories
+        // This is necessary to avoid null reference exceptions in the view model
+        // when the view tries to access categories.
         var viewModel = new CreateVM {
             WatchItems = new CreateVM.WatchItemVM {
                 Brand = "Brand",
@@ -296,7 +299,5 @@ public class WatchControllerTests
         // Verify that the redirection is to the "Index" action, which is the expected behavior after a successful creation.
         Assert.Equal("Index", redirectResult.ActionName);
     }
-
-
 
 }
